@@ -28,7 +28,7 @@ body{font-family:'DM Sans',sans-serif;font-size:15px;color:var(--body);position:
 #app{height:100%;display:flex;flex-direction:column}
 #pw{flex:1;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;scroll-behavior:smooth}
 #pw::-webkit-scrollbar{display:none}
-
+ 
 /* ── NAV ── */
 #nav{flex-shrink:0;display:grid;grid-template-columns:repeat(5,1fr);
   background:rgba(7,7,14,0.96);backdrop-filter:blur(32px);-webkit-backdrop-filter:blur(32px);
@@ -39,22 +39,22 @@ body{font-family:'DM Sans',sans-serif;font-size:15px;color:var(--body);position:
 .nt.on .nt-l{color:var(--g)}.nt.on .nt-i{transform:translateY(-2px) scale(1.08)}
 .nt::after{content:'';position:absolute;top:0;left:25%;right:25%;height:1.5px;background:var(--g);border-radius:0 0 3px 3px;opacity:0;transition:opacity .25s;box-shadow:0 0 8px var(--g)}
 .nt.on::after{opacity:1}
-
+ 
 /* ── PAGES ── */
 .pg{display:none;min-height:100%;padding-bottom:40px}.pg.on{display:block}
-
+ 
 /* ── HERO ── */
 .hero{padding:calc(var(--safe-t) + 24px) 20px 16px;position:relative;overflow:hidden}
 .hglow{position:absolute;inset:0;pointer-events:none}
 .hero-eye{font-family:'Syne',sans-serif;font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--mid);margin-bottom:5px}
 .hero-h{font-family:'Syne',sans-serif;font-size:28px;font-weight:800;color:var(--head);letter-spacing:-.04em;line-height:1.05;margin-bottom:5px}
 .hero-s{font-size:12px;color:var(--mid);line-height:1.5}
-
+ 
 /* ── SECTION HEADER ── */
 .sh{display:flex;align-items:center;gap:10px;padding:18px 20px 8px}
 .shl{flex:1;height:1px;background:var(--ln)}
 .sht{font-family:'Syne',sans-serif;font-size:9px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);white-space:nowrap}
-
+ 
 /* ── CARDS ── */
 .card{background:var(--s1);border:1px solid var(--ln);border-radius:20px;margin:0 14px 10px;overflow:hidden}
 .card.cg{border-color:rgba(168,255,62,.16)}
@@ -64,7 +64,7 @@ body{font-family:'DM Sans',sans-serif;font-size:15px;color:var(--body);position:
 .card.cr{border-color:rgba(255,90,122,.16)}
 .card.ct{border-color:rgba(30,216,184,.16)}
 .cp{padding:16px}
-
+ 
 /* ── KPI GRID ── */
 .kg{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:0 14px}
 .kpi{background:var(--s1);border:1px solid var(--ln);border-radius:18px;padding:14px 16px}
@@ -73,7 +73,7 @@ body{font-family:'DM Sans',sans-serif;font-size:15px;color:var(--body);position:
 .kv{font-family:'Syne',sans-serif;font-size:28px;font-weight:800;color:var(--head);line-height:1;letter-spacing:-.02em}
 .kv.g{color:var(--g)}.kv.b{color:var(--b)}.kv.a{color:var(--a)}.kv.v{color:var(--v)}.kv.r{color:var(--r)}.kv.t{color:var(--t)}.kv.o{color:var(--o)}
 .ks{font-size:11px;color:var(--mid);margin-top:4px}
-
+ 
 /* ── MACRO BARS ── */
 .mbw{margin:0 14px 10px}
 .mbi{background:var(--s1);border:1px solid var(--ln);border-radius:20px;padding:16px}
@@ -89,7 +89,7 @@ body{font-family:'DM Sans',sans-serif;font-size:15px;color:var(--body);position:
 .mbf.ov{background:var(--r)}
 .mbn{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;color:var(--head);min-width:72px;text-align:right;white-space:nowrap}
 .mbn span{color:var(--dim);font-size:9px;font-weight:400;margin-left:1px}
-
+ 
 /* ── LIST ROWS ── */
 .row{display:flex;align-items:center;gap:12px;padding:13px 16px;border-bottom:1px solid var(--ln);cursor:pointer;transition:background .15s}
 .row:last-child{border-bottom:none}
@@ -99,7 +99,7 @@ body{font-family:'DM Sans',sans-serif;font-size:15px;color:var(--body);position:
 .row-name{font-size:13px;font-weight:500;color:var(--head)}
 .row-sub{font-size:11px;color:var(--mid);margin-top:2px}
 .row-right{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--dim);flex-shrink:0}
-
+ 
 /* ── FOOD ITEMS ── */
 .fi{display:flex;align-items:center;gap:10px;padding:12px 16px;border-bottom:1px solid var(--ln)}
 .fi:last-child{border-bottom:none}
@@ -109,7 +109,7 @@ body{font-family:'DM Sans',sans-serif;font-size:15px;color:var(--body);position:
 .fi-cal{font-family:'Syne',sans-serif;font-size:13px;font-weight:800;color:var(--a);flex-shrink:0;margin-right:4px}
 .del-btn{width:26px;height:26px;border-radius:50%;background:var(--ra);border:none;color:var(--r);font-size:13px;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:transform .15s}
 .del-btn:active{transform:scale(.85)}
-
+ 
 /* ── EXERCISE CARDS ── */
 .ex-card{background:var(--s1);border:1px solid var(--ln);border-radius:20px;margin:0 14px 10px;overflow:hidden;transition:border-color .3s}
 .ex-card.done{border-color:rgba(168,255,62,.2);background:linear-gradient(160deg,var(--gb) 0%,var(--s1) 50%)}
@@ -139,13 +139,13 @@ body{font-family:'DM Sans',sans-serif;font-size:15px;color:var(--body);position:
 .ex-add-set{display:flex;align-items:center;justify-content:center;padding:11px;font-family:'Syne',sans-serif;font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mid);cursor:pointer;gap:5px;transition:color .15s;border-top:1px solid var(--ln)}
 .ex-add-set:active{color:var(--g)}
 .ex-rest{padding:8px 14px;font-size:10px;color:var(--dim);background:var(--s2);text-align:center}
-
+ 
 /* ── WEIGHT CHART ── */
 .wcw{margin:0 14px 10px}
 .wci{background:var(--s1);border:1px solid var(--ln);border-radius:20px;padding:16px 14px 12px}
 canvas#wChart{width:100%;display:block;height:140px}
 .wc-foot{display:flex;justify-content:space-between;margin-top:8px;font-family:'Syne',sans-serif;font-size:9px;color:var(--dim)}
-
+ 
 /* ── CALENDAR ── */
 .cal-nav{display:flex;align-items:center;justify-content:space-between;padding:16px 18px 8px;position:relative;z-index:1}
 .cal-month{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:var(--head)}
@@ -171,7 +171,7 @@ canvas#wChart{width:100%;display:block;height:140px}
 .cdot{width:3px;height:3px;border-radius:50%;background:var(--s4)}
 .cdot.on{background:var(--g)}
 .cdot.on-b{background:var(--b)}
-
+ 
 /* ── EDIT PANEL ── */
 .epw{padding:0 14px 12px}
 .ep{background:var(--s1);border:1px solid var(--ln2);border-radius:20px;overflow:hidden}
@@ -195,7 +195,7 @@ canvas#wChart{width:100%;display:block;height:140px}
 .ep-btn:active{transform:scale(.97)}
 .ep-btn.primary{background:var(--g);color:#061000}
 .ep-btn.ghost{background:var(--s4);color:var(--body);border:1px solid var(--ln2)}
-
+ 
 /* ── CHECKIN CARD ── */
 .ci-card{background:linear-gradient(150deg,var(--gb) 0%,var(--s1) 60%);border:1px solid rgba(168,255,62,.18);border-radius:20px;margin:0 14px 10px;padding:18px;position:relative;overflow:hidden}
 .ci-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(168,255,62,.5),transparent)}
@@ -213,7 +213,7 @@ canvas#wChart{width:100%;display:block;height:140px}
 .ci-row.g .ci-t{color:var(--g)}.ci-row.b .ci-t{color:var(--b)}.ci-row.a .ci-t{color:var(--a)}.ci-row.r .ci-t{color:var(--r)}.ci-row.t .ci-t{color:var(--t)}.ci-row.v .ci-t{color:var(--v)}
 .ci-b{font-size:12px;color:var(--body);line-height:1.65}
 .ci-b strong{color:var(--head);font-weight:500}
-
+ 
 /* ── PROFILE ── */
 .goal-list{padding:10px 16px;display:flex;flex-direction:column;gap:6px}
 .goal-item{display:flex;align-items:center;gap:14px;padding:13px 14px;border-radius:14px;border:1px solid var(--ln2);background:var(--s3);cursor:pointer;transition:all .2s}
@@ -229,7 +229,7 @@ canvas#wChart{width:100%;display:block;height:140px}
 .prof-row:last-child{border-bottom:none}
 .prof-lbl{font-size:13px;color:var(--mid)}
 .prof-val{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--head)}
-
+ 
 /* ── SHEETS ── */
 .sbg{position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:80;opacity:0;pointer-events:none;transition:opacity .28s}
 .sbg.on{opacity:1;pointer-events:all}
@@ -247,7 +247,7 @@ canvas#wChart{width:100%;display:block;height:140px}
 .sbtn{display:block;width:calc(100%-40px);margin:14px 20px 0;padding:15px;border-radius:14px;background:var(--g);border:none;color:#051000;font-family:'Syne',sans-serif;font-size:14px;font-weight:800;cursor:pointer;transition:all .15s;letter-spacing:.02em;width:calc(100% - 40px)}
 .sbtn:active{transform:scale(.97)}
 .sbtn.sec{background:var(--s4);color:var(--body);border:1px solid var(--ln2);margin-top:8px}
-
+ 
 /* ── MEAL CHIPS ── */
 .meal-chip{display:flex;align-items:center;gap:12px;padding:13px 16px;border-bottom:1px solid var(--ln);cursor:pointer;transition:background .15s}
 .meal-chip:last-child{border-bottom:none}
@@ -258,11 +258,11 @@ canvas#wChart{width:100%;display:block;height:140px}
 .meal-chip-mac{font-size:10px;color:var(--mid);margin-top:2px}
 .meal-chip-cal{font-family:'Syne',sans-serif;font-size:14px;font-weight:800;color:var(--a)}
 .meal-chip-del{width:26px;height:26px;border-radius:50%;background:var(--ra);border:none;color:var(--r);font-size:12px;display:flex;align-items:center;justify-content:center;cursor:pointer}
-
+ 
 /* ── ACTION BTN ── */
 .abtn{display:block;width:calc(100% - 28px);margin:0 14px 10px;padding:14px;border-radius:14px;background:var(--ga);border:1px solid rgba(168,255,62,.2);color:var(--g);font-family:'Syne',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:all .15s;text-align:center;letter-spacing:.03em}
 .abtn:active{transform:scale(.97)}
-
+ 
 /* ── LIFT PROGRESS CARD ── */
 .lift-card{background:var(--s1);border:1px solid var(--ln);border-radius:20px;margin:0 14px 10px;overflow:hidden}
 .lift-head{display:flex;align-items:center;gap:10px;padding:13px 16px;border-bottom:1px solid var(--ln)}
@@ -279,7 +279,7 @@ canvas#wChart{width:100%;display:block;height:140px}
 .lift-dot-lbl{font-size:9px;color:var(--dim);text-align:center}
 .lift-dot-wt{font-family:'Syne',sans-serif;font-size:10px;font-weight:700;color:var(--head)}
 .lift-tip{padding:10px 16px;font-size:11px;color:var(--a);border-top:1px solid var(--ln);background:var(--aa)}
-
+ 
 /* ── NEXT SESSION CARD ── */
 .ns-card{background:var(--s1);border:1px solid var(--ln);border-radius:20px;margin:0 14px 10px;overflow:hidden}
 .ns-head{padding:14px 16px 10px;border-bottom:1px solid var(--ln);display:flex;align-items:center;gap:10px}
@@ -303,7 +303,7 @@ canvas#wChart{width:100%;display:block;height:140px}
 .ns-change.up{background:var(--ga);color:var(--g)}
 .ns-change.same{background:var(--s4);color:var(--mid)}
 .ns-change.down{background:var(--ra);color:var(--r)}
-
+ 
 /* ── EXERCISE CHART ── */
 .ex-chart-wrap{margin:0 14px 10px}
 .ex-chart-inner{background:var(--s1);border:1px solid var(--ln);border-radius:20px;overflow:hidden}
@@ -335,7 +335,7 @@ canvas#exChart{width:100%;display:block;height:150px}
 .ex-next-lbl{font-family:'Syne',sans-serif;font-size:10px;font-weight:700;color:var(--g);text-transform:uppercase;letter-spacing:.1em;white-space:nowrap}
 .ex-next-rec{font-size:12px;color:var(--body);flex:1;line-height:1.5}
 .ex-next-rec strong{color:var(--g);font-weight:600}
-
+ 
 /* ── PROGRESSION REC ── */
 .prog-rec{background:var(--s2);border-top:1px solid var(--ln);padding:10px 14px;display:flex;align-items:flex-start;gap:10px}
 .prog-rec-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:3px}
@@ -356,7 +356,7 @@ canvas#exChart{width:100%;display:block;height:150px}
 <body>
 <div id="app">
 <div id="pw">
-
+ 
 <!-- ═══ DASHBOARD ═══════════════════════════════════════════════════════════ -->
 <div class="pg on" id="pg-dash">
   <div class="hero">
@@ -386,6 +386,11 @@ canvas#exChart{width:100%;display:block;height:150px}
       <div class="row-info"><div class="row-name">Today's workout</div><div class="row-sub" id="dWoSub">Go to workout tab</div></div>
       <div class="row-right">→</div>
     </div>
+    <div class="row" onclick="openSheet('editprofile')">
+      <div class="row-ico" style="background:var(--va)">👤</div>
+      <div class="row-info"><div class="row-name">Goal & profile</div><div class="row-sub" id="dGoalSub">Change goal or update stats</div></div>
+      <div class="row-right">→</div>
+    </div>
   </div>
   <div class="sh"><div class="shl"></div><div class="sht">Today's food</div><div class="shl"></div></div>
   <div class="card" id="dFoodLog"></div>
@@ -393,7 +398,7 @@ canvas#exChart{width:100%;display:block;height:150px}
   <div id="dCheckin"></div>
   <button class="abtn" onclick="runCheckin()">▶ Run weekly check-in</button>
 </div>
-
+ 
 <!-- ═══ FOOD ═════════════════════════════════════════════════════════════════ -->
 <div class="pg" id="pg-food">
   <div class="hero">
@@ -412,7 +417,7 @@ canvas#exChart{width:100%;display:block;height:150px}
   <div class="sh"><div class="shl"></div><div class="sht">7-day average</div><div class="shl"></div></div>
   <div class="card cp" id="fAvg"></div>
 </div>
-
+ 
 <!-- ═══ WORKOUT ═══════════════════════════════════════════════════════════════ -->
 <div class="pg" id="pg-workout">
   <div class="hero">
@@ -427,7 +432,7 @@ canvas#exChart{width:100%;display:block;height:150px}
   <div class="sh"><div class="shl"></div><div class="sht">Recent sessions</div><div class="shl"></div></div>
   <div class="card" id="woRecent"></div>
 </div>
-
+ 
 <!-- ═══ CALENDAR / PROGRESS ══════════════════════════════════════════════════ -->
 <div class="pg" id="pg-calendar">
   <div class="hero">
@@ -451,7 +456,7 @@ canvas#exChart{width:100%;display:block;height:150px}
   <div class="cal-grid" id="calGrid"></div>
   <div id="calDetail"></div>
 </div>
-
+ 
 <!-- ═══ PROGRESS ══════════════════════════════════════════════════════════════ -->
 <div class="pg" id="pg-progress">
   <div class="hero">
@@ -471,11 +476,23 @@ canvas#exChart{width:100%;display:block;height:150px}
   <div class="sh"><div class="shl"></div><div class="sht">Lift tracker</div><div class="shl"></div></div>
   <div class="ex-chart-wrap">
     <div class="ex-chart-inner">
-      <div class="ex-chart-head">
-        <select class="ex-chart-sel" id="exChartSel" onchange="renderExChart()">
-          <option value="">Select an exercise...</option>
-        </select>
-        <div class="ex-chart-badge new-l" id="exChartBadge">—</div>
+      <div class="ex-chart-head" style="flex-direction:column;align-items:stretch;gap:8px">
+        <div style="display:flex;align-items:center;gap:8px">
+          <select class="ex-chart-sel" id="exDaysSel" onchange="onDaySelChange()" style="flex:1">
+            <option value="">Select workout day...</option>
+            <option value="1">Monday — Upper Body</option>
+            <option value="2">Tuesday — Lower Body</option>
+            <option value="3">Wednesday — Arms + Hams</option>
+            <option value="5">Friday — Upper Aesthetic</option>
+            <option value="all">All logged exercises</option>
+          </select>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <select class="ex-chart-sel" id="exChartSel" onchange="renderExChart()" style="flex:1">
+            <option value="">Select an exercise...</option>
+          </select>
+          <div class="ex-chart-badge new-l" id="exChartBadge">—</div>
+        </div>
       </div>
       <div class="ex-chart-kpi" id="exChartKpi" style="display:none"></div>
       <canvas id="exChart" style="display:none"></canvas>
@@ -492,9 +509,9 @@ canvas#exChart{width:100%;display:block;height:150px}
   <div class="sh"><div class="shl"></div><div class="sht">Next session targets</div><div class="shl"></div></div>
   <div id="prNextSession"></div>
 </div>
-
+ 
 </div><!-- /pw -->
-
+ 
 <!-- NAV -->
 <div id="nav">
   <div class="nt on" onclick="nav('dash')"><div class="nt-i">◉</div><div class="nt-l">Today</div></div>
@@ -504,10 +521,10 @@ canvas#exChart{width:100%;display:block;height:150px}
   <div class="nt" onclick="nav('progress')"><div class="nt-i">◎</div><div class="nt-l">Progress</div></div>
 </div>
 </div><!-- /app -->
-
+ 
 <!-- SHEETS -->
 <div class="sbg" id="sbg" onclick="closeSheet()"></div>
-
+ 
 <!-- FOOD SHEET -->
 <div class="sheet" id="sh-food">
   <div class="sh-handle"></div>
@@ -527,7 +544,7 @@ canvas#exChart{width:100%;display:block;height:150px}
   <button class="sbtn" onclick="saveFood()">Add to today's log</button>
   <button class="sbtn sec" onclick="closeSheet()">Cancel</button>
 </div>
-
+ 
 <!-- SAVE MEAL SHEET -->
 <div class="sheet" id="sh-savemeal">
   <div class="sh-handle"></div>
@@ -549,7 +566,7 @@ canvas#exChart{width:100%;display:block;height:150px}
   <button class="sbtn" onclick="saveMeal()">Save meal</button>
   <button class="sbtn sec" onclick="closeSheet()">Cancel</button>
 </div>
-
+ 
 <!-- WEIGHT SHEET -->
 <div class="sheet" id="sh-weight">
   <div class="sh-handle"></div>
@@ -561,16 +578,20 @@ canvas#exChart{width:100%;display:block;height:150px}
   <button class="sbtn" onclick="saveWeight()">Save</button>
   <button class="sbtn sec" onclick="closeSheet()">Cancel</button>
 </div>
-
+ 
 <!-- EDIT PROFILE SHEET -->
 <div class="sheet" id="sh-editprofile">
   <div class="sh-handle"></div>
-  <div class="sh-title">Edit profile</div>
+  <div class="sh-title">Profile & Goal</div>
+  <div style="padding:14px 20px 0">
+    <div class="fl">Current goal</div>
+    <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:14px" id="shGoalBtns"></div>
+  </div>
   <div class="fg">
-    <div class="fg2">
-      <div><div class="fl">Age</div><input class="fi2" id="pa" type="number" inputmode="numeric"></div>
-      <div><div class="fl">Height (cm)</div><input class="fi2" id="ph" type="number" inputmode="decimal"></div>
-    </div>
+    <div class="fl">Age</div>
+    <input class="fi2" id="pa" type="number" inputmode="numeric">
+    <div class="fl">Height (cm)</div>
+    <input class="fi2" id="ph" type="number" inputmode="decimal">
     <div class="fl">Current weight (lbs)</div>
     <input class="fi2" id="pw2" type="number" inputmode="decimal" step="0.1">
     <div class="fl">Activity level</div>
@@ -581,17 +602,17 @@ canvas#exChart{width:100%;display:block;height:150px}
       <option value="act">Very active</option>
     </select>
   </div>
-  <button class="sbtn" onclick="saveProfileEdit()">Save</button>
+  <button class="sbtn" onclick="saveProfileEdit()">Save profile & goal</button>
   <button class="sbtn sec" onclick="closeSheet()">Cancel</button>
 </div>
-
+ 
 <div id="toast"></div>
-
+ 
 <script>
 // ══════════════════════════════════════════════ STORAGE
 const G=k=>{try{return JSON.parse(localStorage.getItem(k)??'null')}catch{return null}}
 const S=(k,v)=>localStorage.setItem(k,JSON.stringify(v))
-
+ 
 // ══════════════════════════════════════════════ WORKOUT PLAN
 const PLAN={
   1:{day:'MON – UPPER',exercises:[
@@ -638,7 +659,7 @@ const PLAN={
   4:{day:'THU – REST',rest:true},
   6:{day:'SAT – FREE',rest:true},
 }
-
+ 
 // ══════════════════════════════════════════════ DEFAULT PROFILE
 const DEF={age:24,heightCm:168.5,startWt:165,activity:'sed',goal:'bulk',
   targets:{cal:2953,pro:193,carb:373,fat:83},tdee:2650,
@@ -653,7 +674,7 @@ const getWtLog=()=>G('mf4_wt')||[]
 const setWtLog=d=>S('mf4_wt',d)
 const getWoLog=()=>G('mf4_wo')||{}
 const setWoLog=d=>S('mf4_wo',d)
-
+ 
 // ══════════════════════════════════════════════ DATE
 const today=()=>new Date()
 const dk=d=>`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`
@@ -663,7 +684,7 @@ const DAYS_F=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Satur
 const DAYS_S=['Sun','Mon','Tue','Wed','Thu','Fri','Sat']
 const MONTHS_F=['January','February','March','April','May','June','July','August','September','October','November','December']
 const MONTHS_S=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
-
+ 
 // ══════════════════════════════════════════════ MATHS
 function calcBaseTDEE(p){
   const kg=p.startWt*0.453592
@@ -712,12 +733,12 @@ function avg7(){
   const n=logged.length
   return{cal:Math.round(tots.reduce((s,t)=>s+t.cal,0)/n),pro:Math.round(tots.reduce((s,t)=>s+t.pro,0)/n),carb:Math.round(tots.reduce((s,t)=>s+t.carb,0)/n),fat:Math.round(tots.reduce((s,t)=>s+t.fat,0)/n),days:n}
 }
-
+ 
 // ══════════════════════════════════════════════ PROGRESSION
 // Bodyweight exercises — use rep progression not weight
 const BW_EXERCISES=['pull-ups','chin-ups','dips','push-ups','abs (machine)','superset – add/abd']
 function isBW(name){return BW_EXERCISES.some(b=>name.toLowerCase().includes(b.toLowerCase().split('(')[0].trim()))}
-
+ 
 function exHist(name){
   const log=getWoLog();const res=[]
   Object.keys(log).sort().forEach(k=>{
@@ -740,7 +761,7 @@ function exHist(name){
   })
   return res
 }
-
+ 
 // Simple badge for history cards
 function progStat(hist){
   if(hist.length<2)return{s:'new',label:'New'}
@@ -753,30 +774,30 @@ function progStat(hist){
   if(d<-2)return{s:'down',label:`${d}lbs`}
   return{s:'stall',label:'Plateau'}
 }
-
+ 
 // ── SMART PROGRESSION RECOMMENDATION ─────────────────────────────────────
 // Returns {action, recWt, recReps, reason, urgency}
 // action: 'increase_weight' | 'increase_reps' | 'maintain' | 'deload' | 'new'
 function getProgRec(name, planReps){
   const hist=exHist(name)
   if(!hist.length)return{action:'new',reason:'First time logging — start with a comfortable weight you can control'}
-
+ 
   const last=hist[hist.length-1]
   const bw=isBW(name)
-
+ 
   // Parse target rep range from plan e.g. "8-10" → {lo:8,hi:10}
   const parts=(planReps||'8-12').split('-').map(Number)
   const repLo=parts[0]||8,repHi=parts[1]||parts[0]||12
-
+ 
   // Did they hit the top of the rep range on all sets last session?
   const lastReps=last.allSets.filter(s=>parseFloat(s.wt)>0||bw).map(s=>parseFloat(s.reps)||parseFloat((s.reps||'').split('-')[0])||0)
   const hitTop=lastReps.length>0&&lastReps.every(r=>r>=repHi)
   const hitBottom=lastReps.length>0&&lastReps.every(r=>r>=repLo)
   const missedReps=lastReps.length>0&&lastReps.some(r=>r<repLo)
-
+ 
   // How many consecutive sessions at same weight?
   const sameWtSessions=hist.slice().reverse().filter(h=>h.maxWt===last.maxWt).length
-
+ 
   if(bw){
     // Bodyweight: progress by reps then add weight when possible
     if(hitTop){
@@ -787,7 +808,7 @@ function getProgRec(name, planReps){
       return{action:'maintain',recReps:repLo,reason:`Missed target reps last session — hit ${repLo} clean reps before progressing`,urgency:'low'}
     }
   }
-
+ 
   // Weighted exercise
   const inc=last.maxWt>=100?5:2.5 // bigger jumps on heavier lifts
   if(hitTop){
@@ -802,7 +823,7 @@ function getProgRec(name, planReps){
   }
   return{action:'maintain',recWt:last.maxWt,recReps:repLo,reason:`Continue at ${last.maxWt}lbs and focus on rep quality`,urgency:'normal'}
 }
-
+ 
 // Accept rec — prefills all set inputs with recommended weight
 function acceptRec(pi,recWt,recReps){
   const log=getWoLog(),k=tdk()
@@ -817,7 +838,7 @@ function acceptRec(pi,recWt,recReps){
   renderWorkout()
   toast(`✓ Set to ${recWt}lbs — go get it`)
 }
-
+ 
 // Skip rec — prefills with last weight (user chooses to keep same)
 function skipRec(pi,lastWt){
   const log=getWoLog(),k=tdk()
@@ -832,7 +853,7 @@ function skipRec(pi,lastWt){
   renderWorkout()
   toast(`Keeping ${lastWt}lbs — focus on reps`)
 }
-
+ 
 // Get a full next-session plan for all exercises in a given day's workout
 function getNextSessionPlan(dow){
   const plan=PLAN[dow]
@@ -844,13 +865,13 @@ function getNextSessionPlan(dow){
     return{name:pEx.name,sets:pEx.sets,planReps:pEx.reps,rest:pEx.rest,rec,last}
   })
 }
-
+ 
 function allExNames(){
   const log=getWoLog();const s=new Set()
   Object.values(log).forEach(wo=>{if(wo&&wo.ex)wo.ex.forEach(e=>{if(e.name)s.add(e.name)})})
   return Array.from(s).sort()
 }
-
+ 
 // ══════════════════════════════════════════════ AUTO ADJUST
 function runCheckin(){
   const p=getP()
@@ -859,7 +880,7 @@ function runCheckin(){
   const tw=calcTW()
   const notes=[]
   let changed=false
-
+ 
   // Update TDEE from expenditure
   if(expend){
     const old=p.tdee
@@ -920,18 +941,18 @@ function runCheckin(){
   renderProgress()
   toast('✅ Check-in done — targets updated')
 }
-
+ 
 // ══════════════════════════════════════════════ SVG CHECKMARK
 const SVG_CHK=`<svg width="11" height="9" viewBox="0 0 11 9" fill="none"><polyline points="1,4.5 4,8 10,1" stroke="#051000" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>`
 const SVG_CHK2=`<svg width="10" height="8" viewBox="0 0 10 8" fill="none"><polyline points="1,4 3.5,7 9,1" stroke="#051000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`
-
+ 
 // ══════════════════════════════════════════════ MACRO BAR
 function mbar(lbl,val,tgt,cls){
   const pct=Math.min(100,tgt?Math.round(val/tgt*100):0)
   const ov=val>tgt*1.02
   return`<div class="mbr"><div class="mbl">${lbl}</div><div class="mbt"><div class="mbf ${ov?'ov':cls}" style="width:${pct}%"></div></div><div class="mbn">${val}<span> / ${tgt}</span></div></div>`
 }
-
+ 
 // ══════════════════════════════════════════════ RENDER FOOD LIST
 function renderFoodList(elId,items,dayKey){
   const el=document.getElementById(elId);if(!el)return
@@ -946,7 +967,7 @@ function renderFoodList(elId,items,dayKey){
       <button class="del-btn" onclick="delFood('${dayKey||tdk()}',${i})">✕</button>
     </div>`).join('')
 }
-
+ 
 // ══════════════════════════════════════════════ RENDER DASHBOARD
 function renderDash(){
   const t=today(),p=getP(),tgt=p.targets
@@ -975,7 +996,7 @@ function renderDash(){
     ci.innerHTML=`<div class="card cp" style="color:var(--mid);font-size:13px;line-height:1.65">Tap <strong style="color:var(--body)">Run weekly check-in</strong> to get automatic calorie adjustments based on your actual weight trend and food intake. The more data you log, the more accurate it gets.</div>`
   }
 }
-
+ 
 function buildCI(ci){
   if(!ci||!ci.notes||!ci.notes.length)return''
   return`<div class="ci-card">
@@ -984,7 +1005,7 @@ function buildCI(ci){
     <div class="ci-insights">${ci.notes.map(n=>`<div class="ci-row ${n.c||''}"><div class="ci-t">${n.t}</div><div class="ci-b">${n.b}</div></div>`).join('')}</div>
   </div>`
 }
-
+ 
 // ══════════════════════════════════════════════ RENDER FOOD PAGE
 function renderFood(){
   const p=getP(),tgt=p.targets
@@ -1025,7 +1046,7 @@ function renderFood(){
       <span style="font-size:11px;font-weight:600">${diff(v,t2,u)}</span>
     </div>`).join('')
 }
-
+ 
 // ══════════════════════════════════════════════ RENDER WORKOUT
 function renderWorkout(){
   const t=today(),w=t.getDay()
@@ -1043,7 +1064,7 @@ function renderWorkout(){
   const log=getWoLog(),k=tdk()
   if(!log[k])log[k]={ex:[]}
   const logged=log[k].ex||[]
-
+ 
   zone.innerHTML=plan.exercises.map((pEx,pi)=>{
     const lEx=logged.find(e=>e.name===pEx.name)||{name:pEx.name,done:false,sets:[]}
     const done=lEx.done||false
@@ -1053,11 +1074,11 @@ function renderWorkout(){
     const rec=getProgRec(pEx.name,pEx.reps)
     const hasLastData=hist.length>0
     const last=hist.length?hist[hist.length-1]:null
-
+ 
     // Rec pill color
     const recColor=rec.urgency==='high'?'var(--g)':rec.urgency==='normal'?'var(--b)':'var(--a)'
     const recBg=rec.urgency==='high'?'var(--ga)':rec.urgency==='normal'?'var(--ba)':'var(--aa)'
-
+ 
     // What to show in the rec
     let recLabel='',recDetail=''
     if(rec.action==='increase_weight'){
@@ -1076,10 +1097,10 @@ function renderWorkout(){
       recLabel='◆ First session'
       recDetail=rec.reason
     }
-
+ 
     // Pre-fill weight from rec if set inputs are empty and rec suggests a weight
     const prefillWt=(rec.action==='increase_weight'&&rec.recWt&&!lEx.sets.some(s=>s.wt))?rec.recWt:null
-
+ 
     return`<div class="ex-card ${done?'done':''}" id="exc-${pi}">
       <div class="ex-head" onclick="toggleEx(${pi})">
         <div class="ex-check">${done?SVG_CHK:''}</div>
@@ -1089,9 +1110,9 @@ function renderWorkout(){
         </div>
         <div class="ex-prog ${prog.s==='up'?'up':prog.s==='stall'?'stall':'new-e'}">${prog.label}</div>
       </div>
-
+ 
       <div class="ex-body" id="exb-${pi}" style="max-height:${done||lEx.sets.some(s=>s.wt)?'800px':'0'}">
-
+ 
         ${rec.action!=='new'?`
         <div class="prog-rec">
           <div class="prog-rec-dot ${rec.urgency}"></div>
@@ -1103,7 +1124,7 @@ function renderWorkout(){
           <button class="prog-skip" onclick="event.stopPropagation();skipRec(${pi},${last?.maxWt||''},event)">Keep ${last?.maxWt||'?'}lbs</button>
         </div>`:''}
         `:''}
-
+ 
         <div class="set-hdr">
           <div class="set-hdr-lbl">SET</div>
           <div class="set-hdr-lbl">LBS</div>
@@ -1125,8 +1146,8 @@ function renderWorkout(){
   document.getElementById('woRecent').innerHTML=renderRecentWo()
   renderNextSession()
 }
-
-
+ 
+ 
 // ── NEXT SESSION SUMMARY ─────────────────────────────────────────────────
 function renderNextSession(){
   const el=document.getElementById('woNextSession');if(!el)return
@@ -1164,17 +1185,45 @@ function renderNextSession(){
     }).join('')}
   </div>`
 }
-
+ 
 // ── PER-EXERCISE CHART ────────────────────────────────────────────────────
 let selExName=''
-function populateExDropdown(){
-  const sel=document.getElementById('exChartSel');if(!sel)return
-  const names=allExNames()
-  const prev=sel.value||selExName
-  sel.innerHTML='<option value="">Select an exercise...</option>'+names.map(n=>`<option value="${n}" ${n===prev?'selected':''}>${n}</option>`).join('')
-  if(prev)sel.value=prev
+function onDaySelChange(){
+  const daySel=document.getElementById('exDaysSel')
+  if(!daySel)return
+  const dow=daySel.value
+  const exSel=document.getElementById('exChartSel')
+  if(!exSel)return
+  let names=[]
+  if(dow==='all'){
+    names=allExNames()
+  } else if(dow){
+    const plan=PLAN[parseInt(dow)]
+    if(plan&&!plan.rest&&plan.exercises)names=plan.exercises.map(e=>e.name)
+  }
+  const prev=exSel.value
+  exSel.innerHTML='<option value="">Select an exercise...</option>'+names.map(n=>`<option value="${n}" ${n===prev?'selected':''}>${n}</option>`).join('')
+  // Auto-select first if nothing was selected
+  if(!prev&&names.length){exSel.value=names[0];selExName=names[0]}
+  else if(prev&&names.includes(prev)){exSel.value=prev;selExName=prev}
+  else{selExName=''}
+  renderExChart()
 }
-
+ 
+function populateExDropdown(){
+  // Populate day selector — pre-select day that matches today if it's a workout day
+  const daySel=document.getElementById('exDaysSel')
+  if(!daySel)return
+  const todayDow=today().getDay()
+  const workoutDows=[1,2,3,5]
+  if(workoutDows.includes(todayDow)&&!daySel.value){
+    daySel.value=String(todayDow)
+  } else if(!daySel.value){
+    daySel.value='all'
+  }
+  onDaySelChange()
+}
+ 
 function renderExChart(){
   const sel=document.getElementById('exChartSel');if(!sel)return
   selExName=sel.value
@@ -1269,7 +1318,7 @@ function renderExChart(){
     </div>`
   }).join('')
 }
-
+ 
 function findPlanReps(name){
   for(const dp of Object.values(PLAN)){
     if(dp.rest||!dp.exercises)continue
@@ -1278,7 +1327,7 @@ function findPlanReps(name){
   }
   return'8-12'
 }
-
+ 
 function renderRecentWo(){
   const all=getWoLog()
   const past=Object.keys(all).filter(k=>k!==tdk()&&all[k]&&all[k].ex&&all[k].ex.some(e=>e.done)).sort().reverse().slice(0,3)
@@ -1296,7 +1345,7 @@ function renderRecentWo(){
       }).join('')}
     </div>`).join('')
 }
-
+ 
 // ══════════════════════════════════════════════ RENDER CALENDAR
 let calY,calM,selDay=null,calEditMode=false
 function initCal(){const t=today();calY=t.getFullYear();calM=t.getMonth()}
@@ -1391,10 +1440,25 @@ function renderCalDetail(){
         const lEx=(wo.ex||[]).find(e=>e.name===pEx.name)||{name:pEx.name,done:false,sets:[]}
         while(lEx.sets.length<pEx.sets)lEx.sets.push({wt:'',reps:pEx.reps.split('-')[0]})
         const done=lEx.done||false
-        return`<div class="ep-row ${done?'on-g':''}" onclick="togglePastEx('${selDay}',${pi})">
-          <div class="ep-chk">${done?SVG_CHK2:''}</div>
-          <div class="ep-lbl">${pEx.name}</div>
-          <div class="ep-badge">${pEx.sets}×${pEx.reps}</div>
+        return`<div style="border-top:1px solid var(--ln)">
+          <div class="ep-row ${done?'on-g':''}" onclick="togglePastEx('${selDay}',${pi})">
+            <div class="ep-chk">${done?SVG_CHK2:''}</div>
+            <div class="ep-lbl" style="font-weight:600">${pEx.name}</div>
+            <div class="ep-badge">${pEx.sets}×${pEx.reps}</div>
+          </div>
+          <div style="background:var(--s2);padding:6px 14px 10px;display:flex;flex-direction:column;gap:4px">
+            <div style="display:grid;grid-template-columns:28px 1fr 1fr;gap:4px;padding:0 0 3px">
+              <div style="font-family:'Syne',sans-serif;font-size:9px;font-weight:700;color:var(--dim);text-align:center;letter-spacing:.08em">SET</div>
+              <div style="font-family:'Syne',sans-serif;font-size:9px;font-weight:700;color:var(--dim);text-align:center;letter-spacing:.08em">LBS</div>
+              <div style="font-family:'Syne',sans-serif;font-size:9px;font-weight:700;color:var(--dim);text-align:center;letter-spacing:.08em">REPS</div>
+            </div>
+            ${lEx.sets.map((s,si)=>`
+              <div style="display:grid;grid-template-columns:28px 1fr 1fr;gap:4px;align-items:center">
+                <div style="font-family:'Syne',sans-serif;font-size:11px;font-weight:700;color:var(--dim);text-align:center">${si+1}</div>
+                <input style="background:var(--s3);border:1px solid var(--ln2);border-radius:8px;color:var(--head);font-family:'DM Sans',sans-serif;font-size:13px;padding:7px 6px;text-align:center;outline:none;width:100%;-webkit-appearance:none" type="number" value="${s.wt||''}" placeholder="lbs" inputmode="decimal" onchange="updatePastSet('${selDay}',${pi},${si},'wt',this.value)">
+                <input style="background:var(--s3);border:1px solid var(--ln2);border-radius:8px;color:var(--head);font-family:'DM Sans',sans-serif;font-size:13px;padding:7px 6px;text-align:center;outline:none;width:100%;-webkit-appearance:none" value="${s.reps||pEx.reps}" placeholder="${pEx.reps}" onchange="updatePastSet('${selDay}',${pi},${si},'reps',this.value)">
+              </div>`).join('')}
+          </div>
         </div>`}).join('')}`:''}
       <div class="ep-btns">
         <button class="ep-btn ghost" onclick="calEditMode=false;renderCalDetail()">← Back to summary</button>
@@ -1402,7 +1466,7 @@ function renderCalDetail(){
     </div></div>`
   }
 }
-
+ 
 // ══════════════════════════════════════════════ RENDER PROGRESS
 function renderProgress(){
   const wl=getWtLog().sort((a,b)=>a.date.localeCompare(b.date))
@@ -1455,7 +1519,7 @@ function renderProgress(){
     </div>`
   }).filter(Boolean).join('')
 }
-
+ 
 function drawChart(wl){
   const canvas=document.getElementById('wChart');if(!canvas)return
   const dpr=window.devicePixelRatio||1
@@ -1490,7 +1554,7 @@ function drawChart(wl){
   data.forEach((e,i)=>{ctx.beginPath();ctx.arc(xp(i),yp(e.wt),3,0,Math.PI*2);ctx.fillStyle='#a8ff3e';ctx.fill()})
   document.getElementById('wFoot').innerHTML=`<span>${fd(data[0].date)}</span><span style="color:var(--dim)">- - EMA trend</span><span>${fd(data[data.length-1].date)}</span>`
 }
-
+ 
 // ══════════════════════════════════════════════ WORKOUT ACTIONS
 function toggleEx(pi){
   const log=getWoLog(),k=tdk()
@@ -1557,7 +1621,29 @@ function togglePastEx(dayKey,pi){
   lEx.done=!lEx.done
   setWoLog(log);renderCalDetail()
 }
-
+ 
+function updatePastSet(dayKey,pi,si,field,val){
+  const log=getWoLog()
+  const d=new Date(dayKey+'T12:00'),w=d.getDay()
+  const plan=PLAN[w]
+  if(!plan||plan.rest)return
+  if(!log[dayKey])log[dayKey]={ex:[]}
+  if(!log[dayKey].ex)log[dayKey].ex=[]
+  const pEx=plan.exercises[pi]
+  let lEx=log[dayKey].ex.find(e=>e.name===pEx.name)
+  if(!lEx){
+    lEx={name:pEx.name,done:false,sets:Array.from({length:pEx.sets},()=>({wt:'',reps:pEx.reps.split('-')[0]}))}
+    log[dayKey].ex.push(lEx)
+  }
+  while(lEx.sets.length<=si)lEx.sets.push({wt:'',reps:pEx.reps.split('-')[0]})
+  lEx.sets[si][field]=val
+  // Auto-mark as done when weight is entered
+  if(field==='wt'&&val)lEx.done=true
+  setWoLog(log)
+  // Re-render dots on calendar without closing panel
+  renderCal()
+}
+ 
 // ══════════════════════════════════════════════ FOOD ACTIONS
 let calFoodTarget=null
 function openCalFoodSheet(dayKey){calFoodTarget=dayKey;openSheet('food')}
@@ -1618,22 +1704,54 @@ function saveProfileEdit(){
   const h=parseFloat(document.getElementById('ph').value);if(h>100&&h<250)p.heightCm=h
   const w=parseFloat(document.getElementById('pw2').value);if(w>50&&w<500)p.startWt=w
   p.activity=document.getElementById('pact').value
+  if(_pendingGoal)p.goal=_pendingGoal
+  _pendingGoal=null
   p.tdee=calcBaseTDEE(p)
   const surp={bulk:+250,cut:-400,recomp:0,maintain:0}[p.goal]||0
   const nc=p.tdee+surp,d=nc-p.targets.cal
   p.targets.cal=nc;p.targets.carb=Math.max(50,p.targets.carb+Math.round(d/4))
-  setP(p);closeSheet();toast('Profile saved')
+  setP(p);closeSheet();toast(`Profile saved · Goal: ${glbl(p.goal)}`)
   renderDash()
 }
-
+ 
 // ══════════════════════════════════════════════ GOAL
 const glbl=g=>({bulk:'Lean Bulk',cut:'Cut',recomp:'Recomp',maintain:'Maintain'}[g]||g)
-
+ 
+// Temporarily store goal selection in sheet before saving
+let _pendingGoal=null
+function pickGoal(g,el){
+  _pendingGoal=g
+  document.querySelectorAll('#shGoalBtns .goal-item').forEach(i=>i.classList.remove('on'))
+  el.classList.add('on')
+}
+ 
 // ══════════════════════════════════════════════ SHEETS
 let curSheet=null
 function openSheet(id){
   curSheet=id
-  if(id==='editprofile'){const p=getP();document.getElementById('pa').value=p.age;document.getElementById('ph').value=p.heightCm;document.getElementById('pw2').value=p.startWt;document.getElementById('pact').value=p.activity}
+  if(id==='editprofile'){
+    const p=getP()
+    document.getElementById('pa').value=p.age
+    document.getElementById('ph').value=p.heightCm
+    document.getElementById('pw2').value=p.startWt
+    document.getElementById('pact').value=p.activity
+    // Populate goal buttons
+    const GOALS_DEF=[
+      {id:'bulk',ico:'💪',name:'Lean Bulk',sub:'+250 cal surplus · build muscle'},
+      {id:'cut',ico:'🔥',name:'Cut',sub:'−400 cal deficit · lose fat'},
+      {id:'recomp',ico:'⚡',name:'Recomp',sub:'Maintenance · build + lose'},
+      {id:'maintain',ico:'🎯',name:'Maintain',sub:'Maintenance · stay consistent'},
+    ]
+    const shGoal=document.getElementById('shGoalBtns')
+    if(shGoal){
+      shGoal.innerHTML=GOALS_DEF.map(g=>`
+        <div class="goal-item ${p.goal===g.id?'on':''}" onclick="pickGoal('${g.id}',this)">
+          <div class="goal-ico">${g.ico}</div>
+          <div class="goal-txt"><div class="goal-name">${g.name}</div><div class="goal-sub">${g.sub}</div></div>
+          <div class="goal-chk">✓</div>
+        </div>`).join('')
+    }
+  }
   document.getElementById('sbg').classList.add('on')
   document.getElementById('sh-'+id).classList.add('on')
   setTimeout(()=>{const f=document.querySelector('#sh-'+id+' .fi2');if(f)f.focus()},320)
@@ -1643,7 +1761,7 @@ function closeSheet(){
   if(curSheet){document.getElementById('sh-'+curSheet).classList.remove('on')}
   curSheet=null;calFoodTarget=null
 }
-
+ 
 // ══════════════════════════════════════════════ NAV
 function nav(id){
   document.querySelectorAll('.pg').forEach(p=>p.classList.remove('on'))
@@ -1658,7 +1776,7 @@ function nav(id){
   else if(id==='calendar'){initCal();renderCal()}
   else if(id==='progress')renderProgress()
 }
-
+ 
 // ══════════════════════════════════════════════ TOAST
 let toastT
 function toast(msg){
@@ -1666,7 +1784,7 @@ function toast(msg){
   el.textContent=msg;el.classList.add('on')
   clearTimeout(toastT);toastT=setTimeout(()=>el.classList.remove('on'),2500)
 }
-
+ 
 // ══════════════════════════════════════════════ INIT
 if(!G('mf4_prof'))setP(DEF)
 renderDash()
