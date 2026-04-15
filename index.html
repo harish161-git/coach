@@ -77,8 +77,16 @@ body{font-family:'DM Sans',sans-serif;font-size:15px;color:var(--body);position:
 .kpi.w2{grid-column:span 2}
 .kl{font-family:'Syne',sans-serif;font-size:9px;font-weight:700;color:var(--dim);letter-spacing:.14em;text-transform:uppercase;margin-bottom:6px}
 .kv{font-family:'Syne',sans-serif;font-size:26px;font-weight:800;color:var(--head);line-height:1}
-.kv.g{color:var(--g)}.kv.b{color:var(--b)}.kv.a{color:var(--a)}.kv.v{color:var(--v)}.kv.r{color:var(--r)}.kv.t{color:var(--t)}
+.kv.g{color:var(--g)}.kv.b{color:var(--b)}.kv.a{color:var(--a)}.kv.v{color:var(--v)}.kv.r{color:var(--dim)} /* Adherence Neutral */
+.kv.t{color:var(--t)}
 .ks{font-size:11px;color:var(--mid);margin-top:3px}
+
+/* WEEKLY CHART */
+.wk-chart{display:flex;align-items:flex-end;justify-content:space-between;height:80px;padding:5px 0;gap:6px}
+.wk-col{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;height:100%;justify-content:flex-end}
+.wk-bar-wrap{width:100%;flex:1;background:var(--s3);border-radius:6px;display:flex;align-items:flex-end;overflow:hidden}
+.wk-bar{width:100%;border-radius:6px;transition:height 0.5s ease}
+.wk-day{font-family:'Syne',sans-serif;font-size:9px;font-weight:700;color:var(--dim);text-transform:uppercase}
 
 /* MACRO BARS */
 .mbw{margin:0 14px 10px}
@@ -87,7 +95,7 @@ body{font-family:'DM Sans',sans-serif;font-size:15px;color:var(--body);position:
 .mbl{font-family:'Syne',sans-serif;font-size:9px;font-weight:700;color:var(--mid);width:52px;flex-shrink:0;letter-spacing:.06em;text-transform:uppercase}
 .mbt{flex:1;height:7px;background:var(--s4);border-radius:4px;overflow:hidden}
 .mbf{height:7px;border-radius:4px;transition:width .6s cubic-bezier(.4,0,.2,1)}
-.mbf.cal{background:linear-gradient(90deg,var(--gd),var(--g))}.mbf.pro{background:var(--b)}.mbf.crb{background:var(--a)}.mbf.fat{background:var(--v)}.mbf.ov{background:var(--r)}
+.mbf.cal{background:linear-gradient(90deg,var(--gd),var(--g))}.mbf.pro{background:var(--b)}.mbf.crb{background:var(--a)}.mbf.fat{background:var(--v)}.mbf.ov{background:var(--dim)} /* Adherence neutral */
 .mbn{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;color:var(--head);min-width:70px;text-align:right;white-space:nowrap}
 .mbn span{color:var(--dim);font-size:9px;font-weight:400}
 
@@ -101,6 +109,14 @@ body{font-family:'DM Sans',sans-serif;font-size:15px;color:var(--body);position:
 .meal-cal-badge{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--a)}
 .meal-body{border-top:1px solid var(--ln);padding:14px 16px;display:none}
 .meal-body.open{display:block}
+
+/* QUICK ADD PRESETS */
+.presets-wrap{display:flex;gap:6px;overflow-x:auto;padding-bottom:12px;margin-bottom:8px;-webkit-overflow-scrolling:touch}
+.presets-wrap::-webkit-scrollbar{display:none}
+.preset-chip{flex-shrink:0;background:var(--s3);border:1px solid var(--ln2);padding:6px 12px;border-radius:12px;font-family:'Syne',sans-serif;font-size:11px;font-weight:700;color:var(--body);cursor:pointer;transition:all 0.15s}
+.preset-chip:active{transform:scale(0.95);background:var(--s4)}
+.preset-lbl{font-size:8px;color:var(--mid);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:2px;display:block}
+
 .meal-inp-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}
 .meal-inp-group{display:flex;flex-direction:column;gap:4px}
 .mil{font-family:'Syne',sans-serif;font-size:9px;font-weight:700;color:var(--dim);letter-spacing:.1em;text-transform:uppercase}
@@ -236,6 +252,13 @@ canvas#exChart{width:100%;display:block;height:140px}
 .prof-row:last-child{border-bottom:none}
 .prof-lbl{font-size:13px;color:var(--mid)}.prof-val{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--head)}
 
+/* DATA MANAGEMENT BACKUP BUTTONS */
+.data-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 14px 16px; }
+.db-btn { padding: 12px; text-align: center; border-radius: 12px; font-family: 'Syne', sans-serif; font-size: 12px; font-weight: 700; cursor: pointer; transition: all 0.2s; }
+.db-btn-exp { background: var(--ba); color: var(--b); border: 1px solid rgba(77,181,255,0.2); }
+.db-btn-imp { background: var(--s3); color: var(--head); border: 1px solid var(--ln2); }
+.db-btn:active { transform: scale(0.96); }
+
 /* SHEETS */
 .sbg{position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:80;opacity:0;pointer-events:none;transition:opacity .25s}
 .sbg.on{opacity:1;pointer-events:all}
@@ -265,7 +288,6 @@ canvas#exChart{width:100%;display:block;height:140px}
 <div id="app">
 <div id="pw">
 
-<!-- ═══ DASHBOARD ══════════════════════════════════════════════════════ -->
 <div class="pg on" id="pg-dash">
   <div class="hero">
     <div class="hglow" style="background:radial-gradient(ellipse 90% 60% at 50% -5%,rgba(168,255,62,.07) 0%,transparent 70%)"></div>
@@ -273,10 +295,16 @@ canvas#exChart{width:100%;display:block;height:140px}
     <div class="hero-h" id="dTitle">Good morning</div>
     <div class="hero-s" id="dSub"></div>
   </div>
+  
   <div class="sh"><div class="shl"></div><div class="sht">Today's calories</div><div class="shl"></div></div>
   <div class="kg" id="dKpi"></div>
+  
+  <div class="sh"><div class="shl"></div><div class="sht">7-Day Adherence</div><div class="shl"></div></div>
+  <div class="card cp"><div class="wk-chart" id="dWeek"></div></div>
+
   <div class="sh"><div class="shl"></div><div class="sht">Macros</div><div class="shl"></div></div>
   <div class="mbw"><div class="mbi" id="dMacros"></div></div>
+  
   <div class="sh"><div class="shl"></div><div class="sht">Quick actions</div><div class="shl"></div></div>
   <div class="card">
     <div style="display:flex;align-items:center;gap:12px;padding:13px 16px;border-bottom:1px solid var(--ln);cursor:pointer" onclick="nav('food')">
@@ -295,12 +323,12 @@ canvas#exChart{width:100%;display:block;height:140px}
       <div style="font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--dim)">→</div>
     </div>
   </div>
-  <div class="sh"><div class="shl"></div><div class="sht">Weekly check-in</div><div class="shl"></div></div>
+  
+  <div class="sh"><div class="shl"></div><div class="sht">Dynamic Check-in</div><div class="shl"></div></div>
   <div id="dCheckin"></div>
-  <button class="abtn" onclick="runCheckin()">▶ Run weekly check-in</button>
+  <button class="abtn" onclick="runCheckin()">▶ Run Dynamic Check-in</button>
 </div>
 
-<!-- ═══ FOOD ══════════════════════════════════════════════════════════ -->
 <div class="pg" id="pg-food">
   <div class="hero">
     <div class="hglow" style="background:radial-gradient(ellipse 70% 50% at 50% 0%,rgba(255,200,68,.07) 0%,transparent 70%)"></div>
@@ -314,7 +342,6 @@ canvas#exChart{width:100%;display:block;height:140px}
   <div id="mealsZone"></div>
 </div>
 
-<!-- ═══ WORKOUT ════════════════════════════════════════════════════════ -->
 <div class="pg" id="pg-workout">
   <div class="hero">
     <div class="hglow" style="background:radial-gradient(ellipse 70% 50% at 30% 0%,rgba(77,181,255,.07) 0%,transparent 70%)"></div>
@@ -330,7 +357,6 @@ canvas#exChart{width:100%;display:block;height:140px}
   <div class="card" id="woRecent"></div>
 </div>
 
-<!-- ═══ PROGRESS ══════════════════════════════════════════════════════ -->
 <div class="pg" id="pg-progress">
   <div class="hero">
     <div class="hglow" style="background:radial-gradient(ellipse 70% 50% at 60% 0%,rgba(77,181,255,.07) 0%,transparent 70%)"></div>
@@ -381,13 +407,23 @@ canvas#exChart{width:100%;display:block;height:140px}
   <div id="prLifts"></div>
 </div>
 
-<!-- ═══ PROFILE ════════════════════════════════════════════════════════ -->
 <div class="pg" id="pg-profile">
   <div class="hero">
     <div class="hglow" style="background:radial-gradient(ellipse 70% 50% at 60% 0%,rgba(191,122,255,.07) 0%,transparent 70%)"></div>
     <div class="hero-h">Profile</div>
-    <div class="hero-s">Targets update weekly based on your weight trend</div>
+    <div class="hero-s">Targets update weekly based on your true weight trend</div>
   </div>
+  
+  <div class="sh"><div class="shl"></div><div class="sht">Data Management</div><div class="shl"></div></div>
+  <div class="card">
+    <div class="data-grid">
+        <div class="db-btn db-btn-exp" onclick="exportData()">↓ Export Backup</div>
+        <div class="db-btn db-btn-imp" onclick="document.getElementById('importFile').click()">↑ Import Data</div>
+        <input type="file" id="importFile" accept=".json" style="display:none" onchange="importData(event)">
+    </div>
+    <div style="padding: 0 16px 14px; font-size:11px; color:var(--mid); line-height: 1.5; text-align: center;">Export your data weekly. Never lose your lift history if browser clears.</div>
+  </div>
+
   <div class="sh"><div class="shl"></div><div class="sht">Goal</div><div class="shl"></div></div>
   <div class="card"><div class="goal-list" id="goalList"></div></div>
   <div class="sh"><div class="shl"></div><div class="sht">Current targets</div><div class="shl"></div></div>
@@ -398,9 +434,7 @@ canvas#exChart{width:100%;display:block;height:140px}
   <div class="card cp" id="profHow"></div>
 </div>
 
-</div><!-- /pw -->
-
-<div id="nav">
+</div><div id="nav">
   <div class="nt on" onclick="nav('dash')"><div class="nt-i">◉</div><div class="nt-l">Today</div></div>
   <div class="nt" onclick="nav('food')"><div class="nt-i">◈</div><div class="nt-l">Food</div></div>
   <div class="nt" onclick="nav('workout')"><div class="nt-i">◆</div><div class="nt-l">Workout</div></div>
@@ -409,7 +443,6 @@ canvas#exChart{width:100%;display:block;height:140px}
 </div>
 </div>
 
-<!-- WEIGHT SHEET -->
 <div class="sbg" id="sbg" onclick="closeSheet()"></div>
 <div class="sheet" id="sh-weight">
   <div class="sh-handle"></div>
@@ -417,7 +450,7 @@ canvas#exChart{width:100%;display:block;height:140px}
   <div class="fg">
     <div class="fl">Weight (lbs) — morning, before eating</div>
     <input class="fi2" id="ww" type="number" placeholder="165.2" inputmode="decimal" step="0.1">
-    <div style="font-size:12px;color:var(--mid);margin-top:-8px;margin-bottom:12px;line-height:1.6">Log daily for accurate trend tracking. Daily fluctuations of 1–3lbs are normal — the app uses a 7-day EMA to find your real weight.</div>
+    <div style="font-size:12px;color:var(--mid);margin-top:-8px;margin-bottom:12px;line-height:1.6">The app uses an EMA to ignore sodium/water spikes and find your actual tissue weight.</div>
   </div>
   <button class="sbtn" onclick="saveWeight()">Save</button>
   <button class="sbtn sec" onclick="closeSheet()">Cancel</button>
@@ -426,6 +459,15 @@ canvas#exChart{width:100%;display:block;height:140px}
 <div id="toast"></div>
 
 <script>
+// ═══════════════════════════════════════ QUICK-ADD PRESETS
+const PRESETS = [
+  {name: 'Biryani (Est)', cal: 1100, pro: 40, carb: 140, fat: 40},
+  {name: 'Hotpot (Est)', cal: 1000, pro: 60, carb: 30, fat: 60},
+  {name: 'Kirkland Chunks', cal: 540, pro: 54, carb: 33, fat: 21},
+  {name: 'Burger & Eggs', cal: 750, pro: 55, carb: 40, fat: 40},
+  {name: 'Oat Smoothie', cal: 650, pro: 45, carb: 80, fat: 15}
+];
+
 // ═══════════════════════════════════════ STORAGE
 const G=k=>{try{return JSON.parse(localStorage.getItem(k)??'null')}catch{return null}}
 const S=(k,v)=>localStorage.setItem(k,JSON.stringify(v))
@@ -494,7 +536,7 @@ const GOALS_DEF=[
 
 // ═══════════════════════════════════════ DEFAULT PROFILE
 const DEF={age:24,heightCm:168.5,startWt:165,activity:'sed',goal:'bulk',
-  targets:{cal:2953,pro:193,carb:373,fat:83},tdee:2650,
+  targets:{cal:2953,pro:180,carb:380,fat:80},tdee:2650,
   lastCheckin:null,checkinHistory:[]}
 const getP=()=>G('mf5_prof')||DEF
 const setP=p=>S('mf5_prof',p)
@@ -556,18 +598,11 @@ function setFoodDate(k){foodViewDate=k;renderFood()}
 function setWorkoutDate(k){workoutViewDate=k;renderWorkout()}
 
 // ═══════════════════════════════════════ MACRO CALC
-// Research-backed 50/25/25 (carb/fat/pro) split
-// Protein: ~1.1g/lb bodyweight (Stokes et al 2018, Morton et al 2018: 1.6-2.2g/kg optimal)
-// Fat: 25% of calories (supports testosterone & hormone production — ISSN position stand)
-// Carbs: remainder — fuels training performance
 function calcTargets(tdee,goal,wt){
   const surpMap={bulk:250,cut:-400,recomp:0,maintain:0}
   const cal=tdee+(surpMap[goal]||0)
-  // Protein: 1.1g per lb (= 2.42g/kg — upper end of research range, good for muscle building)
-  const pro=Math.round(wt*1.1)
-  // Fat: 25% of total calories
+  const pro=180 // Hardcoded for aesthetics
   const fat=Math.round(cal*0.25/9)
-  // Carbs: remaining calories
   const carb=Math.round((cal-pro*4-fat*9)/4)
   return{cal,pro,fat,carb:Math.max(50,carb)}
 }
@@ -589,17 +624,25 @@ function calcTW(){
   return Math.round(e*10)/10
 }
 
-// ═══════════════════════════════════════ EXPENDITURE MODEL
-// From food intake and weight change: Expenditure = avgCals - (wtChange/day * 3500)
-// Research: Hall et al. 2012 energy balance model
+function getSmoothedWeightArray(){
+    const wl=getWtLog().sort((a,b)=>a.date.localeCompare(b.date));
+    if(!wl.length) return [];
+    let ema = wl[0].wt;
+    return wl.map(entry => {
+        ema = ema * 0.9 + entry.wt * 0.1;
+        return { date: entry.date, emaWt: ema };
+    });
+}
+
+// ═══════════════════════════════════════ EXPENDITURE MODEL (NOISE FILTERED)
 function calcExpend(){
-  const wl=getWtLog().sort((a,b)=>a.date.localeCompare(b.date))
+  const smoothWl = getSmoothedWeightArray();
   const fl=getFoodLog()
-  if(wl.length<8)return null
+  if(smoothWl.length<8)return null
   const res=[]
   for(let w=0;w<2;w++){
     const days=Array.from({length:7},(_,i)=>{const d=new Date();d.setDate(d.getDate()-((w+1)*7)+i);return dk(d)})
-    const we=days.map(k=>wl.find(e=>e.date===k)?.wt).filter(Boolean)
+    const we=days.map(k=>smoothWl.find(e=>e.date===k)?.emaWt).filter(Boolean)
     const ce=days.map(k=>{
       const dayFood=fl[k];if(!dayFood)return null
       return MEAL_DEFS.reduce((s,m)=>s+(dayFood[m.id]?.cal||0),0)||null
@@ -636,10 +679,7 @@ function avg7(){
   return{cal:Math.round(tots.reduce((s,t)=>s+t.cal,0)/n),pro:Math.round(tots.reduce((s,t)=>s+t.pro,0)/n),carb:Math.round(tots.reduce((s,t)=>s+t.carb,0)/n),fat:Math.round(tots.reduce((s,t)=>s+t.fat,0)/n),days:n}
 }
 
-// ═══════════════════════════════════════ AUTO ADJUST (WEEKLY)
-// Research: weekly adjustment is optimal (daily fluctuation 1-3lbs masks real trend)
-// Lean bulk target: +0.25-0.5lbs/week (Helms et al. 2014)
-// Cut target: -0.5-1.0lbs/week (muscle preservation threshold)
+// ═══════════════════════════════════════ DYNAMIC CHECK-IN (ADHERENCE NEUTRAL)
 function runCheckin(){
   const p=getP()
   const expend=calcExpend()
@@ -647,55 +687,53 @@ function runCheckin(){
   const tw=calcTW()
   const notes=[]
 
-  // Step 1: Update TDEE from real expenditure data (more accurate than formula)
+  // Step 1: Update TDEE from real expenditure data
   if(expend){
     const old=p.tdee
     p.tdee=Math.round(old*0.7+expend*0.3) // blend for stability
     if(Math.abs(p.tdee-old)>20){
-      notes.push({c:'b',t:'Expenditure updated',b:`Actual burn: ~<strong>${p.tdee} cal/day</strong>. ${p.tdee>old?`Up ${p.tdee-old} cal — your weight/muscle mass increased, so you burn more.`:`Down ${old-p.tdee} cal from last measurement.`}`})
+      notes.push({c:'b',t:'Dynamic Expenditure Updated',b:`Actual burn: ~<strong>${p.tdee} cal/day</strong>. Calculated using smoothed weight trend to filter out water weight noise.`})
     }
   }
 
-  // Step 2: Auto-update start weight from true weight (scale targets with bodyweight)
+  // Step 2: Auto-update start weight from true weight
   if(tw&&Math.abs(tw-p.startWt)>0.3){
     const old=p.startWt;p.startWt=tw
     if(!expend){p.tdee=calcBaseTDEE(p)}
-    notes.push({c:'t',t:`Weight updated: ${old}→${tw}lbs`,b:`TDEE recalculated to <strong>${p.tdee} cal</strong>. Protein target updated to <strong>${Math.round(tw*1.1)}g</strong> (1.1g/lb).`})
+    notes.push({c:'t',t:`Weight updated: ${old}→${tw}lbs`,b:`TDEE recalculated to <strong>${p.tdee} cal</strong>.`})
   }
 
-  // Step 3: Recalculate targets with 50/25/25 split
+  // Step 3: Recalculate targets based on goal
   const newTargets=calcTargets(p.tdee,p.goal,p.startWt)
   let adj=0
 
-  // Step 4: Fine-tune based on weight trend
+  // Step 4: Fine-tune based on trend (Clamp max change to 200)
   if(wtCh!==null){
     if(p.goal==='bulk'){
-      if(wtCh>0.6){adj=-150;notes.push({c:'a',t:'Gaining too fast',b:`+<strong>${wtCh}lbs/wk</strong> (target: 0.25–0.5). Reducing <strong>150 cal</strong> from carbs to slow fat gain.`})}
-      else if(wtCh>0.5){adj=-75;notes.push({c:'a',t:'Slightly fast',b:`+<strong>${wtCh}lbs/wk</strong> — just above ideal. Trimming <strong>75 cal</strong> from carbs.`})}
-      else if(wtCh<=-0.1){adj=+175;notes.push({c:'r',t:'Losing on bulk!',b:`Weight dropping on a bulk — adding <strong>175 cal</strong> immediately.`})}
-      else if(wtCh<0.1){adj=+100;notes.push({c:'g',t:'Gain rate too slow',b:`Only +<strong>${wtCh}lbs/wk</strong>. Adding <strong>100 cal</strong> (mostly carbs) to drive muscle growth.`})}
-      else notes.push({c:'g',t:`Lean bulk on track`,b:`+<strong>${wtCh}lbs/wk</strong> — perfect rate for muscle building with minimal fat. No change needed.`})
+      if(wtCh>0.6){adj=-150;notes.push({c:'a',t:'Gaining too fast',b:`+<strong>${wtCh}lbs/wk</strong>. Reducing <strong>150 cal</strong> to slow fat gain.`})}
+      else if(wtCh<0.1){adj=+100;notes.push({c:'g',t:'Gain rate too slow',b:`Only +<strong>${wtCh}lbs/wk</strong>. Adding <strong>100 cal</strong> to drive muscle growth.`})}
+      else notes.push({c:'g',t:`Lean bulk on track`,b:`+<strong>${wtCh}lbs/wk</strong> — perfect rate. No change needed.`})
     } else if(p.goal==='cut'){
-      if(wtCh<-1.1){adj=+150;notes.push({c:'r',t:'Losing too fast',b:`<strong>${wtCh}lbs/wk</strong> — muscle loss risk above 1lb/wk. Adding <strong>150 cal</strong>.`})}
-      else if(wtCh>-0.2){adj=-100;notes.push({c:'a',t:'Cut too slow',b:`Only <strong>${Math.abs(wtCh)}lbs/wk</strong> loss. Dropping <strong>100 cal</strong> from carbs.`})}
-      else notes.push({c:'g',t:'Cut on track',b:`<strong>${wtCh}lbs/wk</strong> loss — sustainable rate preserving muscle.`})
-    } else {
-      notes.push({c:'g',t:'On track',b:`Weight change: <strong>${wtCh>0?'+':''}${wtCh}lbs/wk</strong>. ${p.goal==='recomp'?'Recomp is slow — focus on training quality and protein intake.':'Maintenance looking good.'}`})
+      if(wtCh<-1.1){adj=+150;notes.push({c:'r',t:'Losing too fast',b:`<strong>${wtCh}lbs/wk</strong>. Adding <strong>150 cal</strong>.`})}
+      else if(wtCh>-0.2){adj=-100;notes.push({c:'a',t:'Cut too slow',b:`Dropping <strong>100 cal</strong>.`})}
+      else notes.push({c:'g',t:'Cut on track',b:`<strong>${wtCh}lbs/wk</strong> loss — sustainable rate.`})
     }
   } else {
-    notes.push({c:'b',t:'Need more data',b:`Log weight daily and meals consistently for <strong>8+ days</strong> to activate auto-adjustment. The more data, the more accurate.`})
+    notes.push({c:'b',t:'Need more data',b:`Log weight daily and meals consistently for <strong>14+ days</strong> for optimal noise filtering.`})
   }
 
-  const finalCal=newTargets.cal+adj
+  // Clamp the adjustment to max 200 calories per week
+  adj = Math.max(-200, Math.min(200, adj));
+  
   const finalTargets=calcTargets(p.tdee+(adj||0),p.goal,p.startWt)
-  // Show what changed
+  
   if(Math.abs(finalTargets.cal-p.targets.cal)>10){
-    notes.unshift({c:'g',t:`Target: ${p.targets.cal}→${finalTargets.cal} cal`,b:`Carbs: ${p.targets.carb}→${finalTargets.carb}g · Protein: ${finalTargets.pro}g · Fat: ${finalTargets.fat}g<br><em style="font-size:10px;color:var(--mid)">Split: ~50% carbs / 25% fat / 25% protein (research-backed for athletic performance)</em>`})
+    notes.unshift({c:'g',t:`Target: ${p.targets.cal}→${finalTargets.cal} cal`,b:`Carbs: ${p.targets.carb}→${finalTargets.carb}g · Protein: ${finalTargets.pro}g · Fat: ${finalTargets.fat}g`})
   }
 
   p.targets=finalTargets
   p.lastCheckin=tdk()
-  p.checkinHistory=[...(p.checkinHistory||[]),{date:tdk(),notes,targets:{...p.targets}}].slice(-12)
+  p.checkinHistory=[{date:tdk(),notes,targets:{...p.targets}}]
   setP(p)
   renderDash();renderProfile()
   toast('✅ Check-in done — targets updated')
@@ -821,9 +859,12 @@ function renderDash(){
   document.getElementById('dSub').textContent=tw?`True weight: ${tw}lbs · ${glbl(p.goal)}`:`Goal: ${glbl(p.goal)}`
   const tots=dayTotals(tdk())
   const rem=tgt.cal-tots.cal
+  
+  // Adherence Neutral KPI Logic
   document.getElementById('dKpi').innerHTML=`
     <div class="kpi"><div class="kl">Target</div><div class="kv g">${tgt.cal}</div><div class="ks">cal / day</div></div>
-    <div class="kpi"><div class="kl">Logged</div><div class="kv a">${tots.cal}</div><div class="ks">${rem>=0?rem+' remaining':Math.abs(rem)+' over'}</div></div>`
+    <div class="kpi"><div class="kl">Logged</div><div class="kv ${rem<0?'r':'a'}">${tots.cal}</div><div class="ks">${rem>=0?rem+' remaining':Math.abs(rem)+' over (neutral)'}</div></div>`
+  
   document.getElementById('dMacros').innerHTML=mbar('Calories',tots.cal,tgt.cal,'cal')+mbar('Protein',tots.pro,tgt.pro,'pro')+mbar('Carbs',tots.carb,tgt.carb,'crb')+mbar('Fat',tots.fat,tgt.fat,'fat')
   const wl=getWtLog(),tw2=wl.find(e=>e.date===tdk())
   document.getElementById('dWtSub').textContent=tw2?`${tw2.wt}lbs logged · trend: ${tw||'—'}lbs`:'Tap to log — aim for daily morning weigh-in'
@@ -831,14 +872,25 @@ function renderDash(){
   document.getElementById('dMealSub').textContent=logged?`${logged} of 5 meals logged today`:'No meals logged yet'
   const woLog=getWoLog(),todayWo=woLog[tdk()]
   document.getElementById('dWoSub').textContent=todayWo&&todayWo.ex&&todayWo.ex.filter(e=>e.done).length?`${todayWo.ex.filter(e=>e.done).length} exercises done`:'See today\'s plan'
+  
+  // Weekly Chart Logic
+  let wHTML='', d=new Date();
+  for(let i=6;i>=0;i--){
+    let dt=new Date(d); dt.setDate(d.getDate()-i); let k=dt.toISOString().split('T')[0]
+    let cal=dayTotals(k).cal, pct=Math.min(100,(cal/p.targets.cal)*100)||5
+    let col=cal===0?'var(--s4)':(cal>p.targets.cal+100?'var(--dim)':'var(--g)')
+    wHTML+=`<div class="wk-col"><div class="wk-bar-wrap"><div class="wk-bar" style="height:${pct}%;background:${col}"></div></div><div class="wk-day">${DAYS_S[dt.getDay()]}</div></div>`
+  }
+  document.getElementById('dWeek').innerHTML=wHTML;
+
   // Checkin
   const p2=getP()
   const ci=document.getElementById('dCheckin')
   if(p2.checkinHistory&&p2.checkinHistory.length){
-    const last=p2.checkinHistory[p2.checkinHistory.length-1]
-    ci.innerHTML=`<div class="ci-card"><div class="ci-title">Weekly check-in</div><div class="ci-date">${fd(last.date)} · ${last.targets.cal}cal · P${last.targets.pro}g · C${last.targets.carb}g · F${last.targets.fat}g</div><div class="ci-insights">${last.notes.map(n=>`<div class="ci-row ${n.c||''}"><div class="ci-t">${n.t}</div><div class="ci-b">${n.b}</div></div>`).join('')}</div></div>`
+    const last=p2.checkinHistory[0]
+    ci.innerHTML=`<div class="ci-card"><div class="ci-title">Dynamic Check-in</div><div class="ci-date">${fd(last.date)} · ${last.targets.cal}cal · P${last.targets.pro}g</div><div class="ci-insights">${last.notes.map(n=>`<div class="ci-row ${n.c||''}"><div class="ci-t">${n.t}</div><div class="ci-b">${n.b}</div></div>`).join('')}</div></div>`
   } else {
-    ci.innerHTML=`<div class="card cp" style="color:var(--mid);font-size:13px;line-height:1.65">Tap <strong style="color:var(--body)">Run weekly check-in</strong> to automatically adjust your calorie and macro targets based on your weight trend. Uses your actual expenditure data — not just a formula.</div>`
+    ci.innerHTML=`<div class="card cp" style="color:var(--mid);font-size:13px;line-height:1.65">Tap <strong style="color:var(--body)">Run Dynamic Check-in</strong> to automatically adjust your targets based on your true weight trend.</div>`
   }
 }
 
@@ -850,7 +902,7 @@ function renderFood(){
   const isToday=foodViewDate===tdk()
   const d=new Date(foodViewDate+'T12:00')
   document.getElementById('fSub').textContent=`${isToday?'Today':''+DAYS_F[d.getDay()]+', '+fd(foodViewDate)} · ${tots.cal} of ${tgt.cal} cal`
-  const rem=n=>n>=0?`${n} left`:`${Math.abs(n)} over`
+  const rem=n=>n>=0?`${n} left`:`${Math.abs(n)} over (neutral)`
   document.getElementById('fKpi').innerHTML=`
     <div class="kpi"><div class="kl">Calories</div><div class="kv a">${tots.cal}</div><div class="ks">${rem(tgt.cal-tots.cal)}</div></div>
     <div class="kpi"><div class="kl">Protein</div><div class="kv b">${tots.pro}g</div><div class="ks">${rem(tgt.pro-tots.pro)}</div></div>
@@ -868,10 +920,18 @@ function renderMeals(){
     const logged=(meal.cal||0)>0
     const isOpen=openMeal===m.id
     const p=getP(),tgt=p.targets
-    // Per-meal macro targets (proportional split across 5 meals)
     const mealWeights={breakfast:.25,snack1:.1,lunch:.3,snack2:.1,dinner:.25}
     const w=mealWeights[m.id]||.2
     const mTgt={cal:Math.round(tgt.cal*w),pro:Math.round(tgt.pro*w),carb:Math.round(tgt.carb*w),fat:Math.round(tgt.fat*w)}
+    
+    // Quick Add Presets HTML
+    const presetsHtml = `
+      <div class="mil" style="margin-bottom:6px">Quick Fill Database</div>
+      <div class="presets-wrap">
+        ${PRESETS.map(pr => `<div class="preset-chip" onclick="applyPreset('${m.id}', ${pr.cal}, ${pr.pro}, ${pr.carb}, ${pr.fat})"><span class="preset-lbl">${pr.cal} cal | ${pr.pro}g P</span>${pr.name}</div>`).join('')}
+      </div>
+    `;
+
     return`<div class="meal-card ${logged?'logged':''}" id="mc-${m.id}">
       <div class="meal-head" onclick="toggleMeal('${m.id}')">
         <div class="meal-ico" style="background:${logged?'var(--ga)':'var(--s3)'}">${m.ico}</div>
@@ -883,6 +943,7 @@ function renderMeals(){
         <div class="mmp">P ${meal.pro||0}g</div><div class="mmp">C ${meal.carb||0}g</div><div class="mmp">F ${meal.fat||0}g</div>
       </div>`:''}
       <div class="meal-body ${isOpen?'open':''}" id="mb-${m.id}">
+        ${presetsHtml}
         <div style="font-size:11px;color:var(--mid);margin-bottom:10px;line-height:1.5">Target: ~${mTgt.cal} cal · P${mTgt.pro}g · C${mTgt.carb}g · F${mTgt.fat}g</div>
         <div class="meal-inp-grid">
           <div class="meal-inp-group"><div class="mil">Calories</div><input class="mif" type="number" value="${meal.cal||''}" placeholder="${mTgt.cal}" inputmode="decimal" id="mi-cal-${m.id}"></div>
@@ -906,6 +967,14 @@ function toggleMeal(id){
       if(el)el.focus()
     },50)
   }
+}
+
+function applyPreset(mealId, cal, pro, carb, fat) {
+    document.getElementById(`mi-cal-${mealId}`).value = cal;
+    document.getElementById(`mi-pro-${mealId}`).value = pro;
+    document.getElementById(`mi-carb-${mealId}`).value = carb;
+    document.getElementById(`mi-fat-${mealId}`).value = fat;
+    toast('Macros loaded. Click Save.');
 }
 
 function saveMeal(mealId,dayKey){
@@ -1112,7 +1181,7 @@ function renderProgress(){
   document.getElementById('prSub').textContent=tw?`True weight: ${tw}lbs`:'Log weight daily to see trend'
   const glr=p.goal==='bulk'?'Target: +0.25–0.5lbs/wk':p.goal==='cut'?'Target: −0.5–1.0lbs/wk':'Target: ±0.2lbs/wk'
   document.getElementById('prKpi').innerHTML=`
-    <div class="kpi"><div class="kl">True weight</div><div class="kv t">${tw||'—'}</div><div class="ks">7-day EMA</div></div>
+    <div class="kpi"><div class="kl">True weight</div><div class="kv t">${tw||'—'}</div><div class="ks">EMA Filtered</div></div>
     <div class="kpi"><div class="kl">Weekly Δ</div><div class="kv ${wtCh!==null?(wtCh>0?'g':'a'):'t'}">${wtCh!==null?(wtCh>0?'+':'')+wtCh:'—'}</div><div class="ks">${wtCh!==null?glr:'Need 14 days'}</div></div>
     <div class="kpi"><div class="kl">Expenditure</div><div class="kv b">${expend||'—'}</div><div class="ks">${expend?'cal/day':'Need 2 wks'}</div></div>
     <div class="kpi"><div class="kl">Target</div><div class="kv g">${p.targets.cal}</div><div class="ks">${p.targets.cal-p.tdee>0?'+':''}${p.targets.cal-p.tdee} surplus</div></div>`
@@ -1300,10 +1369,10 @@ function renderProfile(){
   document.getElementById('profHow').innerHTML=`<div style="font-size:12px;color:var(--body);line-height:1.75">
     <strong style="color:var(--head)">50/25/25 macro split</strong> (Carbs/Fat/Protein)<br>
     Research-backed for athletic performance. Protein at 1.1g/lb exceeds the minimum threshold from Stokes et al. (2018) and Morton et al. (2018). Fat at 25% supports hormone production (ISSN Position Stand). Carbs at 50% fuel training and recovery.<br><br>
-    <strong style="color:var(--head)">Weekly adjustment</strong><br>
-    Targets update once per week using your actual weight trend (7-day rolling average eliminates daily fluctuation). The expenditure model — calories eaten vs weight change — gives a more accurate TDEE than any formula alone.<br><br>
+    <strong style="color:var(--head)">Dynamic Adjustment</strong><br>
+    Targets update once per week using an advanced EMA (Exponential Moving Average) to ignore sodium/water spikes and find your actual tissue weight.<br><br>
     <strong style="color:var(--head)">Daily weigh-ins</strong><br>
-    Research (Lowe et al. 2014) shows daily weigh-ins give the most accurate trend. The app uses an Exponential Moving Average (α=0.1) to smooth out water retention, sodium, and digestion noise.
+    Research (Lowe et al. 2014) shows daily weigh-ins give the most accurate trend. Log your weight every morning before eating.
   </div>`
 }
 
@@ -1352,6 +1421,34 @@ function saveStats(){
   renderProfile();renderDash()
 }
 
+// ---- BACKUP LOGIC ----
+function exportData() {
+  const data = { mf5_prof: G('mf5_prof'), mf5_food: G('mf5_food'), mf5_wt: G('mf5_wt'), mf5_wo: G('mf5_wo') };
+  const blob = new Blob([JSON.stringify(data)], {type: 'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = `Aesthetic_Coach_Backup_${tdk()}.json`; a.click();
+  toast('Backup saved to Downloads');
+}
+
+function importData(e) {
+  const file = e.target.files[0];
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = function(evt) {
+    try {
+      const d = JSON.parse(evt.target.result);
+      if(d.mf5_prof) S('mf5_prof', d.mf5_prof);
+      if(d.mf5_food) S('mf5_food', d.mf5_food);
+      if(d.mf5_wt) S('mf5_wt', d.mf5_wt);
+      if(d.mf5_wo) S('mf5_wo', d.mf5_wo);
+      toast('Data imported! Reloading...');
+      setTimeout(()=>location.reload(), 1000);
+    } catch(err) { toast('Invalid backup file'); }
+  };
+  reader.readAsText(file);
+}
+
 // ═══════════════════════════════════════ SHEETS
 let curSheet=null
 function openSheet(id){
@@ -1398,7 +1495,6 @@ const _n=today()
 setTimeout(()=>{renderDash();setInterval(renderDash,86400000)},new Date(_n.getFullYear(),_n.getMonth(),_n.getDate()+1)-_n)
 </script>
 
-<!-- EDIT STATS SHEET -->
 <div class="sheet" id="sh-editstats">
   <div class="sh-handle"></div>
   <div class="sh-title">Edit stats</div>
