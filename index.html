@@ -338,10 +338,6 @@ canvas#exChart{width:100%;display:block;height:140px}
   <div id="workoutDateNav"></div>
   <div class="sh"><div class="shl"></div><div class="sht" id="woSht">Exercises</div><div class="shl"></div></div>
   <div id="woZone"></div>
-  <div class="sh"><div class="shl"></div><div class="sht">Next session</div><div class="shl"></div></div>
-  <div id="woNextSession"></div>
-  <div class="sh"><div class="shl"></div><div class="sht">Recent sessions</div><div class="shl"></div></div>
-  <div class="card" id="woRecent"></div>
 </div>
 
 <div class="pg" id="pg-progress">
@@ -955,7 +951,7 @@ function clearMeal(mealId,dayKey){
   renderFood();renderDash()
 }
 
-// ═══════════════════════════════════════ RENDER WORKOUT
+// ═══════════════════════════════════════ RENDER WORKOUT (SMART AUTO-FILL)
 function renderWorkout(){
   buildDateNav('workoutDateNav',workoutViewDate,'setWorkoutDate')
   const d=new Date(workoutViewDate+'T12:00'),w=d.getDay()
@@ -965,24 +961,48 @@ function renderWorkout(){
   document.getElementById('woS').textContent=plan.rest?'Rest — recovery is training':'Tap exercise to expand · previous session shown for reference'
   document.getElementById('woSht').textContent=plan.rest?'Rest day':'Exercises'
   const zone=document.getElementById('woZone')
+  
   if(plan.rest){
     zone.innerHTML=`<div class="card cp" style="color:var(--mid);font-size:13px;line-height:1.65">Rest day — stretch, walk, eat well. Muscle is built during recovery.</div>`
-    document.getElementById('woNextSession').innerHTML=''
-    document.getElementById('woRecent').innerHTML=renderRecentWo()
     return
   }
+  
   const log=getWoLog(),k=workoutViewDate
   if(!log[k])log[k]={ex:[]}
-  const logged=log[k].ex||[]
+  let needsSave = false;
+
   zone.innerHTML=plan.exercises.map((pEx,pi)=>{
-    const lEx=logged.find(e=>e.name===pEx.name)||{name:pEx.name,done:false,sets:[]}
+    let lEx=log[k].ex.find(e=>e.name===pEx.name)
+    
+    // SMART AUTO-FILL LOGIC
+    if(!lEx){
+      const pastHist = exHist(pEx.name);
+      const lastPast = pastHist.length ? pastHist[pastHist.length-1] : null;
+      let initialSets = [];
+      
+      // If we have history, copy the exact weights and reps from last session
+      if(lastPast && lastPast.allSets) {
+         initialSets = lastPast.allSets.map(ls => ({wt: ls.wt||'', reps: ls.reps||pEx.reps.split('-')[0]}));
+         // Trim or expand to match the current plan's target sets
+         while(initialSets.length < pEx.sets) initialSets.push({wt:'', reps: pEx.reps.split('-')[0]});
+         initialSets = initialSets.slice(0, pEx.sets);
+      } else {
+         // Brand new exercise, leave empty
+         initialSets = Array.from({length:pEx.sets},()=>({wt:'',reps:pEx.reps.split('-')[0]}));
+      }
+      
+      lEx={name:pEx.name,done:false,sets:initialSets};
+      log[k].ex.push(lEx);
+      needsSave = true; // Flag to save these auto-filled values to storage
+    }
+
     const done=lEx.done||false
-    while(lEx.sets.length<pEx.sets)lEx.sets.push({wt:'',reps:pEx.reps.split('-')[0]})
     const hist=exHist(pEx.name)
     const prog=progStat(hist)
     const rec=getProgRec(pEx.name,pEx.reps)
     const last=hist.length?hist[hist.length-1]:null
     const prevSession=hist.filter(h=>h.date<k).slice(-1)[0]||null
+    
     const recColor=rec.urgency==='high'?'var(--g)':rec.urgency==='normal'?'var(--b)':'var(--a)'
     let recLabel='',recDetail=''
     if(rec.action==='increase_weight'){recLabel=`↑ Try ${rec.recWt}lbs`;recDetail=rec.reason}
@@ -990,7 +1010,9 @@ function renderWorkout(){
     else if(rec.action==='deload'){recLabel=`↓ Drop to ${rec.recWt}lbs`;recDetail=rec.reason}
     else if(rec.action==='maintain'){recLabel=last?`→ Stay at ${rec.recWt||last.maxWt}lbs`:`→ Maintain`;recDetail=rec.reason}
     else{recLabel='◆ First session';recDetail=rec.reason}
+    
     const bodyOpen=done||lEx.sets.some(s=>s.wt)
+    
     return`<div class="ex-card ${done?'done':''}" id="exc-${pi}">
       <div class="ex-head" onclick="toggleEx(${pi},'${k}')">
         <div class="ex-check">${done?SVG_CHK:''}</div>
@@ -1011,7 +1033,6 @@ function renderWorkout(){
         </div>
         ${(rec.action==='increase_weight'||rec.action==='deload')&&rec.recWt?`<div class="prog-rec-actions">
           <button class="prog-accept" onclick="event.stopPropagation();acceptRec(${pi},${rec.recWt},'${pEx.reps.split('-')[0]}','${k}')">✓ Use ${rec.recWt}lbs</button>
-          <button class="prog-skip" onclick="event.stopPropagation();skipRec(${pi},${last?.maxWt||''},'${k}')">Keep ${last?.maxWt||'?'}lbs</button>
         </div>`:''}`:'' }
         <div class="set-hdr"><div class="shdr-l">SET</div><div class="shdr-l">LBS</div><div class="shdr-l">REPS</div><div></div></div>
         ${lEx.sets.map((s,si)=>`<div class="set-row">
@@ -1021,68 +1042,20 @@ function renderWorkout(){
           <div class="set-del" onclick="event.stopPropagation();delWoSet(${pi},${si},'${k}')">✕</div>
         </div>`).join('')}
         <div class="ex-add-set" onclick="event.stopPropagation();addWoSet(${pi},'${pEx.reps}','${k}')">+ add set</div>
-        ${pEx.rest!=='—'?`<div class="ex-rest">Rest: ${pEx.rest}</div>`:''}
       </div>
     </div>`
   }).join('')
-  renderNextSession()
-  document.getElementById('woRecent').innerHTML=renderRecentWo()
-}
-
-function renderNextSession(){
-  const el=document.getElementById('woNextSession');if(!el)return
-  const w=today().getDay()
-  let nextDow=w,tries=0
-  do{nextDow=(nextDow+1)%7;tries++}while(PLAN[nextDow]?.rest&&tries<7)
-  const plan=PLAN[nextDow];if(!plan||plan.rest){el.innerHTML='';return}
-  const nextPlan=getNextSessionPlan(nextDow)
-  const dn=['Sun','Mon','Tue','Wed','Thu','Fri','Sat']
-  const icons={increase_weight:'↑',increase_reps:'↑',maintain:'→',deload:'↓',new:'◆'}
-  const urgMap={high:'high',normal:'normal',low:'low'}
-  el.innerHTML=`<div class="ns-card">
-    <div class="ns-head"><div class="ns-title">Next session plan</div><div class="ns-day">${dn[nextDow]} · ${plan.short||plan.day}</div></div>
-    ${nextPlan.map(ex=>{
-      const rec=ex.rec,urg=rec.action==='new'?'new-e':urgMap[rec.urgency]||'normal'
-      const chDir={increase_weight:'up',maintain:'same',deload:'down',increase_reps:'up',new:'same'}[rec.action]||'same'
-      let rt='',cl=''
-      if(rec.action==='increase_weight'){rt=`<strong>${rec.recWt}lbs</strong> × ${ex.planReps} — ${rec.reason}`;cl=`+${((rec.recWt||0)-(ex.last?.maxWt||0)).toFixed(1)}lbs`}
-      else if(rec.action==='increase_reps'){rt=`<strong>Aim ${rec.recReps} reps</strong> — ${rec.reason}`;cl=`+1 rep`}
-      else if(rec.action==='deload'){rt=`<strong>Drop to ${rec.recWt}lbs</strong> — ${rec.reason}`;cl=`Reset`}
-      else if(rec.action==='maintain'){rt=`<strong>${rec.recWt||ex.last?.maxWt||'—'}lbs</strong> × ${ex.planReps} — ${rec.reason}`;cl=`Hold`}
-      else{rt=rec.reason;cl=`New`}
-      const cc=urg==='high'?'g':urg==='normal'?'b':'a'
-      return`<div class="ns-row"><div class="ns-ico ${urg}">${icons[rec.action]||'→'}</div><div class="ns-info"><div class="ns-name">${ex.name}</div><div class="ns-rec ${cc}">${rt}</div></div><div class="ns-change ${chDir}">${cl}</div></div>`
-    }).join('')}
-  </div>`
-}
-
-function renderRecentWo(){
-  const all=getWoLog()
-  const past=Object.keys(all).filter(k=>k!==workoutViewDate&&all[k]&&all[k].ex&&all[k].ex.some(e=>e.done)).sort().reverse().slice(0,3)
-  if(!past.length)return`<div class="cp" style="color:var(--dim);font-size:13px">No past sessions logged yet</div>`
-  return past.map(k=>`<div style="padding:11px 16px;border-bottom:1px solid var(--ln)">
-    <div style="font-family:'Syne',sans-serif;font-size:10px;font-weight:700;color:var(--mid);margin-bottom:6px;letter-spacing:.1em;text-transform:uppercase">${DAYS_S[new Date(k+'T12:00').getDay()]} · ${fd(k)}</div>
-    ${all[k].ex.filter(e=>e.done).map(e=>{
-      const prog=progStat(exHist(e.name))
-      const top=e.sets.filter(s=>parseFloat(s.wt)>0).sort((a,b)=>parseFloat(b.wt)-parseFloat(a.wt))[0]
-      return`<div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
-        <span style="font-size:12px;color:var(--body);flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${e.name}${top?` · ${top.wt}lbs×${top.reps}`:''}</span>
-        <span style="font-size:10px;font-weight:700;color:${prog.s==='up'?'var(--g)':prog.s==='stall'?'var(--a)':'var(--dim)'};flex-shrink:0">${prog.label}</span>
-      </div>`
-    }).join('')}
-  </div>`).join('')
+  
+  if(needsSave) setWoLog(log);
 }
 
 // ═══════════════════════════════════════ WORKOUT ACTIONS
 function toggleEx(pi,dayKey){
   const k=dayKey||workoutViewDate
-  const d=new Date(k+'T12:00'),w=d.getDay()
-  const plan=PLAN[w];if(!plan||plan.rest)return
+  const d=new Date(k+'T12:00'),w=d.getDay(), plan=PLAN[w];if(!plan||plan.rest)return
   const log=getWoLog();if(!log[k])log[k]={ex:[]}
   const pEx=plan.exercises[pi]
-  if(!log[k].ex)log[k].ex=[]
   let lEx=log[k].ex.find(e=>e.name===pEx.name)
-  if(!lEx){lEx={name:pEx.name,done:false,sets:Array.from({length:pEx.sets},()=>({wt:'',reps:pEx.reps.split('-')[0]}))};log[k].ex.push(lEx)}
   lEx.done=!lEx.done
   setWoLog(log)
   const body=document.getElementById(`exb-${pi}`)
@@ -1093,32 +1066,27 @@ function toggleEx(pi,dayKey){
 }
 function updateWoSet(pi,si,field,val,dayKey){
   const k=dayKey||workoutViewDate
-  const d=new Date(k+'T12:00'),w=d.getDay()
-  const plan=PLAN[w];if(!plan||plan.rest)return
+  const d=new Date(k+'T12:00'),w=d.getDay(), plan=PLAN[w];if(!plan||plan.rest)return
   const log=getWoLog();if(!log[k])log[k]={ex:[]}
   const pEx=plan.exercises[pi]
   let lEx=log[k].ex.find(e=>e.name===pEx.name)
-  if(!lEx){lEx={name:pEx.name,done:false,sets:Array.from({length:pEx.sets},()=>({wt:'',reps:pEx.reps.split('-')[0]}))};log[k].ex.push(lEx)}
   while(lEx.sets.length<=si)lEx.sets.push({wt:'',reps:pEx.reps.split('-')[0]})
   lEx.sets[si][field]=val
   setWoLog(log)
 }
 function addWoSet(pi,defReps,dayKey){
   const k=dayKey||workoutViewDate
-  const d=new Date(k+'T12:00'),w=d.getDay()
-  const plan=PLAN[w];if(!plan||plan.rest)return
+  const d=new Date(k+'T12:00'),w=d.getDay(), plan=PLAN[w];if(!plan||plan.rest)return
   const log=getWoLog();if(!log[k])log[k]={ex:[]}
   const pEx=plan.exercises[pi]
   let lEx=log[k].ex.find(e=>e.name===pEx.name)
-  if(!lEx){lEx={name:pEx.name,done:false,sets:[]};log[k].ex.push(lEx)}
   const last=lEx.sets[lEx.sets.length-1]||{wt:'',reps:defReps.split('-')[0]}
   lEx.sets.push({wt:last.wt,reps:last.reps})
   setWoLog(log);renderWorkout()
 }
 function delWoSet(pi,si,dayKey){
   const k=dayKey||workoutViewDate
-  const d=new Date(k+'T12:00'),w=d.getDay()
-  const plan=PLAN[w];if(!plan||plan.rest)return
+  const d=new Date(k+'T12:00'),w=d.getDay(), plan=PLAN[w];if(!plan||plan.rest)return
   const log=getWoLog();if(!log[k]||!log[k].ex)return
   const pEx=plan.exercises[pi]
   const lEx=log[k].ex.find(e=>e.name===pEx.name);if(!lEx)return
