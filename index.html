@@ -321,8 +321,6 @@ canvas#exChart{width:100%;display:block;height:140px}
   </div>
   <div id="foodDateNav"></div>
   
-  <button class="abtn" style="margin-top:10px; background:var(--ba); color:var(--b); border-color:rgba(77,181,255,0.2)" onclick="copyYesterday()">⚡ Copy Previous Day's Meals</button>
-  
   <div class="sh"><div class="shl"></div><div class="sht">Macros</div><div class="shl"></div></div>
   <div class="kg" id="fKpi"></div>
   <div class="sh"><div class="shl"></div><div class="sht">Meals</div><div class="shl"></div></div>
@@ -647,13 +645,26 @@ function dayTotals(k){
 }
 
 // ═══════════════════════════════════════ COPY YESTERDAY LOGIC
-function copyYesterday(){
-  let fl=getFL(), keys=Object.keys(fl).sort().filter(k=>k<foodViewDate); 
-  if(!keys.length) { toast('No previous data found.'); return; }
-  fl[foodViewDate] = JSON.parse(JSON.stringify(fl[keys.pop()])); 
-  setFL(fl); 
-  renderFood(); 
-  toast('⚡ Copied previous log');
+function copyYesterdayMeal(mealId, dayKey) {
+  const d = new Date(dayKey + 'T12:00');
+  d.setDate(d.getDate() - 1);
+  const yKey = dk(d);
+  
+  const fl = getFoodLog();
+  if (!fl[yKey] || !fl[yKey][mealId] || !(fl[yKey][mealId].cal > 0)) {
+    toast('No food logged for this meal yesterday!');
+    return;
+  }
+  
+  if (!fl[dayKey]) fl[dayKey] = {};
+  fl[dayKey][mealId] = JSON.parse(JSON.stringify(fl[yKey][mealId]));
+  setFoodLog(fl);
+  
+  const mName = MEAL_DEFS.find(m => m.id === mealId)?.name || mealId;
+  toast(`✓ Copied yesterday's ${mName}`);
+  
+  renderFood();
+  renderDash();
 }
 
 // ═══════════════════════════════════════ DYNAMIC CHECK-IN
@@ -902,6 +913,7 @@ function renderMeals(){
         <div class="mmp">P ${meal.pro||0}g</div><div class="mmp">C ${meal.carb||0}g</div><div class="mmp">F ${meal.fat||0}g</div>
       </div>`:''}
       <div class="meal-body ${isOpen?'open':''}" id="mb-${m.id}">
+        <button onclick="copyYesterdayMeal('${m.id}','${foodViewDate}')" style="width:100%; padding:9px; border-radius:10px; background:var(--s2); border:1px dashed var(--ln2); color:var(--mid); font-family:'Syne',sans-serif; font-size:11px; font-weight:700; cursor:pointer; margin-bottom:10px; transition:all .15s;">⟳ Copy Yesterday's ${m.name}</button>
         <div class="meal-inp-grid">
           <div class="meal-inp-group"><div class="mil">Calories</div><input class="mif" type="number" value="${meal.cal||''}" placeholder="0" inputmode="decimal" id="mi-cal-${m.id}"></div>
           <div class="meal-inp-group"><div class="mil">Protein (g)</div><input class="mif" type="number" value="${meal.pro||''}" placeholder="0" inputmode="decimal" id="mi-pro-${m.id}"></div>
