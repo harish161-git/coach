@@ -74,7 +74,7 @@ body{font-family:'DM Sans',sans-serif;font-size:15px;color:var(--body);position:
 .kpi{background:var(--s1);border:1px solid var(--ln);border-radius:18px;padding:13px 16px}
 .kl{font-family:'Syne',sans-serif;font-size:9px;font-weight:700;color:var(--dim);letter-spacing:.14em;text-transform:uppercase;margin-bottom:6px}
 .kv{font-family:'Syne',sans-serif;font-size:26px;font-weight:800;color:var(--head);line-height:1}
-.kv.g{color:var(--g)}.kv.b{color:var(--b)}.kv.a{color:var(--a)}.kv.v{color:var(--v)}.kv.r{color:var(--dim)} /* Adherence Neutral Overages */
+.kv.g{color:var(--g)}.kv.b{color:var(--b)}.kv.a{color:var(--a)}.kv.v{color:var(--v)}.kv.r{color:var(--dim)}
 .ks{font-size:11px;color:var(--mid);margin-top:3px}
 
 /* WEEKLY CHART */
@@ -101,6 +101,7 @@ body{font-family:'DM Sans',sans-serif;font-size:15px;color:var(--body);position:
 .meal-head{display:flex;align-items:center;gap:12px;padding:13px 16px;cursor:pointer}
 .meal-ico{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
 .meal-name{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:var(--head);flex:1}
+.meal-desc{font-family:'DM Sans',sans-serif;font-size:11px;color:var(--mid);margin-top:2px;font-weight:400}
 .meal-card.logged .meal-name{color:var(--g)}
 .meal-cal-badge{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--a)}
 .meal-body{border-top:1px solid var(--ln);padding:14px 16px;display:none}
@@ -361,9 +362,10 @@ canvas#exChart{width:100%;display:block;height:140px}
           <select class="exc-sel" id="exDaySel" onchange="onDaySelChange()">
             <option value="">Workout day...</option>
             <option value="1">Monday — Upper</option>
-            <option value="2">Tuesday — Lower</option>
-            <option value="3">Wednesday — Arms+Hams</option>
-            <option value="5">Friday — Upper Aesthetic</option>
+            <option value="2">Tuesday — Lower Quads</option>
+            <option value="3">Wednesday — Active Recovery</option>
+            <option value="4">Thursday — Arms & Hams</option>
+            <option value="5">Friday — Upper B</option>
             <option value="all">All exercises</option>
           </select>
         </div>
@@ -444,58 +446,62 @@ canvas#exChart{width:100%;display:block;height:140px}
 const G=k=>{try{return JSON.parse(localStorage.getItem(k)??'null')}catch{return null}}
 const S=(k,v)=>localStorage.setItem(k,JSON.stringify(v))
 
-// ═══════════════════════════════════════ WORKOUT PLAN
+// ═══════════════════════════════════════ NEW 4-DAY AESTHETIC PLAN
 const PLAN={
-  1:{day:'MON – UPPER',short:'Upper',exercises:[
-    {name:'Incline DB Press',sets:3,reps:'8-10',rest:'2-3 min'},
-    {name:'Pec Dec',sets:2,reps:'8-12',rest:'90s'},
-    {name:'Pull-Ups / Lat Pulldown',sets:3,reps:'8-10',rest:'2-3 min'},
-    {name:'Chest Supported Row / Kelso Shrug',sets:2,reps:'8-12',rest:'2 min'},
-    {name:'Cable Lateral Raise',sets:3,reps:'12-20',rest:'60s'},
-    {name:'Rear Delt Fly',sets:2,reps:'12-15',rest:'45-60s'},
-    {name:'Bayesian Curl',sets:1,reps:'8-10',rest:'60s'},
-    {name:'Rope Pressdown',sets:1,reps:'10-12',rest:'60s'},
+  1:{day:'MON – UPPER A (V-Taper)',short:'Upper A',exercises:[
+    {name:'Incline DB Press',sets:2,reps:'8-10',rest:'90s'},
+    {name:'Pec Dec',sets:2,reps:'10-12',rest:'90s'},
+    {name:'Pull-Ups / Lat Pulldown',sets:2,reps:'8-10',rest:'90s'},
+    {name:'Chest Supported Row',sets:2,reps:'10-12',rest:'90s'},
+    {name:'Cable Lateral Raise',sets:2,reps:'12-15',rest:'60s'},
+    {name:'Rear Delt Fly',sets:2,reps:'12-15',rest:'60s'},
+    {name:'Bayesian Curl',sets:2,reps:'10-12',rest:'60s'},
+    {name:'Rope Pressdown',sets:2,reps:'10-12',rest:'60s'}
   ]},
-  2:{day:'TUE – LOWER (QUADS)',short:'Lower',exercises:[
-    {name:'Hack Squat',sets:3,reps:'8-10',rest:'2-3 min'},
-    {name:'Leg Press',sets:1,reps:'10-12',rest:'2 min'},
-    {name:'Superset – Add/Abd',sets:1,reps:'10-12',rest:'—',superset:true},
-    {name:'Leg Extension',sets:3,reps:'12-15',rest:'60s'},
-    {name:'Standing Calf Raise',sets:4,reps:'12-20',rest:'60s'},
-    {name:'Abs (Machine)',sets:2,reps:'12-15',rest:'45-60s'},
+  2:{day:'TUE – LOWER QUADS',short:'Lower',exercises:[
+    {name:'Hanging Leg Raises',sets:2,reps:'12-20',rest:'60s'},
+    {name:'Hack Squat (Pause)',sets:2,reps:'8-10',rest:'2 min'},
+    {name:'Leg Press',sets:2,reps:'10-12',rest:'90s'},
+    {name:'Leg Extension',sets:2,reps:'12-15',rest:'60s'},
+    {name:'Standing Calf Raise',sets:3,reps:'15-20',rest:'60s'}
   ]},
-  3:{day:'WED – ARMS + HAMS',short:'Arms+Hams',exercises:[
-    {name:'Seated Leg Curl',sets:3,reps:'10-12',rest:'60-90s'},
-    {name:'RDL',sets:2,reps:'6-10',rest:'2-3 min'},
-    {name:'Incline DB Curl',sets:3,reps:'8-10',rest:'60-90s'},
+  3:{day:'WED – ACTIVE RECOVERY',short:'Recovery',exercises:[
+    {name:'Hanging Leg Raises',sets:3,reps:'12-20',rest:'60s'},
+    {name:'Cable Crunches',sets:3,reps:'15',rest:'60s'},
+    {name:'Decline Bench Crunches',sets:2,reps:'15-20',rest:'60s'},
+    {name:'Stationary Bike (Zone 2)',sets:1,reps:'40 mins',rest:'—'}
+  ]},
+  4:{day:'THU – ARMS + HAMS',short:'Arms+Hams',exercises:[
+    {name:'Seated Leg Curl',sets:2,reps:'10-12',rest:'60s'},
+    {name:'RDL',sets:2,reps:'8-10',rest:'90s'},
+    {name:'Incline DB Curl',sets:2,reps:'8-10',rest:'60s'},
     {name:'Hammer Curl',sets:2,reps:'10-12',rest:'60s'},
-    {name:'Skullcrusher',sets:3,reps:'8-10',rest:'60-90s'},
+    {name:'Skullcrusher',sets:2,reps:'8-10',rest:'60s'},
     {name:'Bar Pressdown',sets:2,reps:'10-12',rest:'60s'},
-    {name:'Barbell Shrugs',sets:3,reps:'12-15',rest:'45-60s'},
-    {name:'Forearm Superset',sets:2,reps:'12-15',rest:'30-45s',superset:true},
+    {name:'Forearm Superset',sets:2,reps:'12-15',rest:'45s',superset:true},
+    {name:'Cable Crunch',sets:2,reps:'12-15',rest:'60s'}
   ]},
-  5:{day:'FRI – UPPER (AESTHETIC)',short:'Upper Aes.',exercises:[
-    {name:'Wide Lat Pulldown',sets:3,reps:'8-10',rest:'2 min'},
+  5:{day:'FRI – UPPER B',short:'Upper B',exercises:[
+    {name:'Wide Lat Pulldown',sets:2,reps:'8-10',rest:'90s'},
     {name:'Cable Row',sets:2,reps:'10-12',rest:'90s'},
-    {name:'Incline Bench / Smith',sets:3,reps:'8-10',rest:'2 min'},
-    {name:'Pec Dec',sets:2,reps:'8-12',rest:'90s'},
-    {name:'DB Lateral Raise',sets:3,reps:'8-12',rest:'60s'},
-    {name:'Face Pulls',sets:2,reps:'12-15',rest:'45-60s'},
-    {name:'Straight Arm Pulldown',sets:1,reps:'12-15',rest:'—'},
-    {name:'Cable Curl',sets:1,reps:'10-12',rest:'45s'},
-    {name:'Triceps Overhead',sets:1,reps:'10-12',rest:'45s'},
-    {name:'Forearm Superset',sets:2,reps:'12-15',rest:'30-45s',superset:true},
+    {name:'Incline Bench',sets:2,reps:'8-10',rest:'90s'},
+    {name:'DB Lateral Raise',sets:3,reps:'10-12',rest:'60s'},
+    {name:'Face Pulls',sets:2,reps:'12-15',rest:'60s'},
+    {name:'Straight Arm Pulldown',sets:2,reps:'12-15',rest:'60s'}
   ]},
-  0:{day:'SUN – REST',rest:true},4:{day:'THU – REST',rest:true},6:{day:'SAT – FREE',rest:true},
+  6:{day:'SAT – CARDIO',short:'Cardio',exercises:[
+    {name:'Incline Treadmill Walk (12% / 3mph)',sets:1,reps:'30 mins',rest:'—'}
+  ]},
+  0:{day:'SUN – REST',rest:true}
 }
 
-// Meals definition
+// Meals definition (Auto-fill macro targets included)
 const MEAL_DEFS=[
-  {id:'breakfast',name:'Breakfast',ico:'🌅'},
-  {id:'snack1',name:'Snack 1',ico:'🍎'},
-  {id:'lunch',name:'Lunch',ico:'☀️'},
-  {id:'snack2',name:'Snack 2',ico:'🥜'},
-  {id:'dinner',name:'Dinner',ico:'🌙'},
+  {id:'breakfast',name:'Breakfast',ico:'🌅',desc:'Whey, Creatine, Milk, Cheerios',def:{cal:710,pro:45,carb:111,fat:13}},
+  {id:'snack1',name:'Snack 1',ico:'🍎',desc:'20g Almonds',def:{cal:115,pro:4,carb:4,fat:10}},
+  {id:'lunch',name:'Lunch',ico:'☀️',desc:'Chicken, Rice, Veggies',def:{cal:585,pro:42,carb:92,fat:4}},
+  {id:'snack2',name:'Snack 2',ico:'🍔',desc:'Beef Patty, Cheese, 2 Eggs (No Oil)',def:{cal:540,pro:38,carb:28,fat:28}},
+  {id:'dinner',name:'Dinner',ico:'🌙',desc:'Chicken, Rice, Beans, Yogurt',def:{cal:675,pro:59,carb:97,fat:4}},
 ]
 
 // Goals definition
@@ -506,9 +512,9 @@ const GOALS_DEF=[
   {id:'maintain',ico:'🎯',name:'Maintain',sub:'Maintenance cal · no body composition goal, just consistency',surplus:0},
 ]
 
-// ═══════════════════════════════════════ DEFAULT PROFILE
-const DEF={age:24,heightCm:168.5,startWt:165,activity:'sed',goal:'bulk',
-  targets:{cal:2900,pro:181,carb:363,fat:81},tdee:2650,
+// ═══════════════════════════════════════ DEFAULT PROFILE (AESTHETIC MACROS)
+const DEF={age:24,heightCm:168.5,startWt:165,activity:'sed',goal:'recomp',
+  targets:{cal:2625,pro:188,carb:332,fat:59},tdee:2625,
   lastCheckin:null,checkinHistory:[]}
 const getP=()=>G('mf5_prof')||DEF
 const setP=p=>S('mf5_prof',p)
@@ -537,7 +543,6 @@ let workoutViewDate=tdk()
 function buildDateNav(containerId,selectedKey,onSelect){
   const el=document.getElementById(containerId);if(!el)return
   const t=today()
-  // Show 30 past days + today
   const chips=[]
   for(let i=29;i>=0;i--){
     const d=new Date(t);d.setDate(t.getDate()-i)
@@ -557,7 +562,6 @@ function buildDateNav(containerId,selectedKey,onSelect){
       <div class="dc-dot ${dotCls}"></div>
     </div>`
   }).join('')+'</div>'
-  // Scroll selected into view
   setTimeout(()=>{
     const nav=document.getElementById('dn-'+containerId)
     if(!nav)return
@@ -569,14 +573,14 @@ function buildDateNav(containerId,selectedKey,onSelect){
 function setFoodDate(k){foodViewDate=k;renderFood()}
 function setWorkoutDate(k){workoutViewDate=k;renderWorkout()}
 
-// ═══════════════════════════════════════ MACRO CALC (STRICT 50/25/25)
+// ═══════════════════════════════════════ MACRO CALC (AESTHETIC SPLIT)
 function calcTargets(tdee,goal,wt){
   const surpMap={bulk:250,cut:-400,recomp:0,maintain:0}
   const cal=tdee+(surpMap[goal]||0)
-  // Exact math: 50% Carbs, 25% Protein, 25% Fat
-  const pro=Math.round((cal*0.25)/4)
-  const fat=Math.round((cal*0.25)/9)
-  const carb=Math.round((cal*0.50)/4)
+  // High Protein (approx 28%), Low Fat (approx 20%), Remainder Carbs (approx 52%)
+  const pro=Math.round((cal*0.28)/4)
+  const fat=Math.round((cal*0.20)/9)
+  const carb=Math.round((cal*0.52)/4)
   return{cal,pro,fat,carb}
 }
 
@@ -644,27 +648,17 @@ function dayTotals(k){
   },{cal:0,pro:0,carb:0,fat:0})
 }
 
-// ═══════════════════════════════════════ COPY YESTERDAY LOGIC
-function copyYesterdayMeal(mealId, dayKey) {
-  const d = new Date(dayKey + 'T12:00');
-  d.setDate(d.getDate() - 1);
-  const yKey = dk(d);
-  
+// ═══════════════════════════════════════ MEAL QUICK LOG
+function quickLogMeal(mealId, dayKey) {
+  const m = MEAL_DEFS.find(x => x.id === mealId);
+  if(!m || !m.def) return;
   const fl = getFoodLog();
-  if (!fl[yKey] || !fl[yKey][mealId] || !(fl[yKey][mealId].cal > 0)) {
-    toast('No food logged for this meal yesterday!');
-    return;
-  }
-  
-  if (!fl[dayKey]) fl[dayKey] = {};
-  fl[dayKey][mealId] = JSON.parse(JSON.stringify(fl[yKey][mealId]));
+  if(!fl[dayKey]) fl[dayKey] = {};
+  fl[dayKey][mealId] = JSON.parse(JSON.stringify(m.def));
   setFoodLog(fl);
-  
-  const mName = MEAL_DEFS.find(m => m.id === mealId)?.name || mealId;
-  toast(`✓ Copied yesterday's ${mName}`);
-  
-  renderFood();
-  renderDash();
+  openMeal = null;
+  toast(`⚡ ${m.name} routine logged`);
+  renderFood(); renderDash();
 }
 
 // ═══════════════════════════════════════ DYNAMIC CHECK-IN
@@ -905,7 +899,10 @@ function renderMeals(){
     return`<div class="meal-card ${logged?'logged':''}" id="mc-${m.id}">
       <div class="meal-head" onclick="toggleMeal('${m.id}')">
         <div class="meal-ico" style="background:${logged?'var(--ga)':'var(--s3)'}">${m.ico}</div>
-        <div class="meal-name">${m.name}</div>
+        <div style="flex:1">
+          <div class="meal-name">${m.name}</div>
+          <div class="meal-desc">${m.desc}</div>
+        </div>
         ${logged?`<div class="meal-cal-badge">${meal.cal} cal</div>`:''}
         <div style="font-family:'Syne',sans-serif;font-size:12px;color:var(--dim);margin-left:6px">${isOpen?'▲':'▼'}</div>
       </div>
@@ -913,7 +910,7 @@ function renderMeals(){
         <div class="mmp">P ${meal.pro||0}g</div><div class="mmp">C ${meal.carb||0}g</div><div class="mmp">F ${meal.fat||0}g</div>
       </div>`:''}
       <div class="meal-body ${isOpen?'open':''}" id="mb-${m.id}">
-        <button onclick="copyYesterdayMeal('${m.id}','${foodViewDate}')" style="width:100%; padding:9px; border-radius:10px; background:var(--s2); border:1px dashed var(--ln2); color:var(--mid); font-family:'Syne',sans-serif; font-size:11px; font-weight:700; cursor:pointer; margin-bottom:10px; transition:all .15s;">⟳ Copy Yesterday's ${m.name}</button>
+        <button onclick="quickLogMeal('${m.id}','${foodViewDate}')" style="width:100%; padding:9px; border-radius:10px; background:var(--ba); border:1px solid rgba(77,181,255,.2); color:var(--b); font-family:'Syne',sans-serif; font-size:11px; font-weight:700; cursor:pointer; margin-bottom:10px; transition:all .15s;">⚡ Log Standard Meal</button>
         <div class="meal-inp-grid">
           <div class="meal-inp-group"><div class="mil">Calories</div><input class="mif" type="number" value="${meal.cal||''}" placeholder="0" inputmode="decimal" id="mi-cal-${m.id}"></div>
           <div class="meal-inp-group"><div class="mil">Protein (g)</div><input class="mif" type="number" value="${meal.pro||''}" placeholder="0" inputmode="decimal" id="mi-pro-${m.id}"></div>
@@ -992,20 +989,17 @@ function renderWorkout(){
       const lastPast = pastHist.length ? pastHist[pastHist.length-1] : null;
       let initialSets = [];
       
-      // If we have history, copy the exact weights and reps from last session
       if(lastPast && lastPast.allSets) {
          initialSets = lastPast.allSets.map(ls => ({wt: ls.wt||'', reps: ls.reps||pEx.reps.split('-')[0]}));
-         // Trim or expand to match the current plan's target sets
          while(initialSets.length < pEx.sets) initialSets.push({wt:'', reps: pEx.reps.split('-')[0]});
          initialSets = initialSets.slice(0, pEx.sets);
       } else {
-         // Brand new exercise, leave empty
          initialSets = Array.from({length:pEx.sets},()=>({wt:'',reps:pEx.reps.split('-')[0]}));
       }
       
       lEx={name:pEx.name,done:false,sets:initialSets};
       log[k].ex.push(lEx);
-      needsSave = true; // Flag to save these auto-filled values to storage
+      needsSave = true;
     }
 
     const done=lEx.done||false
@@ -1200,7 +1194,7 @@ function populateExDropdown(){
   const ds=document.getElementById('exDaySel');if(!ds)return
   if(!ds.value){
     const todayDow=today().getDay()
-    ds.value=[1,2,3,5].includes(todayDow)?String(todayDow):'all'
+    ds.value=[1,2,3,4,5].includes(todayDow)?String(todayDow):'all'
   }
   onDaySelChange()
 }
@@ -1284,9 +1278,9 @@ function renderProfile(){
     </div>`).join('')
   document.getElementById('profTargets').innerHTML=`
     <div class="prof-row"><div class="prof-lbl">Calories</div><div class="prof-val">${tgt.cal} cal</div></div>
-    <div class="prof-row"><div class="prof-lbl">Protein</div><div class="prof-val">${tgt.pro}g <span style="font-size:10px;color:var(--mid)">(25%)</span></div></div>
-    <div class="prof-row"><div class="prof-lbl">Carbs</div><div class="prof-val">${tgt.carb}g <span style="font-size:10px;color:var(--mid)">(50%)</span></div></div>
-    <div class="prof-row"><div class="prof-lbl">Fat</div><div class="prof-val">${tgt.fat}g <span style="font-size:10px;color:var(--mid)">(25%)</span></div></div>
+    <div class="prof-row"><div class="prof-lbl">Protein</div><div class="prof-val">${tgt.pro}g <span style="font-size:10px;color:var(--mid)">(~28%)</span></div></div>
+    <div class="prof-row"><div class="prof-lbl">Carbs</div><div class="prof-val">${tgt.carb}g <span style="font-size:10px;color:var(--mid)">(~52%)</span></div></div>
+    <div class="prof-row"><div class="prof-lbl">Fat</div><div class="prof-val">${tgt.fat}g <span style="font-size:10px;color:var(--mid)">(~20%)</span></div></div>
     <div class="prof-row"><div class="prof-lbl">Est. TDEE</div><div class="prof-val" style="color:var(--b)">${p.tdee} cal</div></div>
     <div class="prof-row"><div class="prof-lbl">${tgt.cal>p.tdee?'Surplus':'Deficit'}</div><div class="prof-val" style="color:${tgt.cal>p.tdee?'var(--g)':'var(--r)'}">${tgt.cal>p.tdee?'+':''}${tgt.cal-p.tdee} cal</div></div>`
   document.getElementById('profStats').innerHTML=`
@@ -1296,7 +1290,7 @@ function renderProfile(){
     <div class="prof-row"><div class="prof-lbl">Activity</div><div class="prof-val">${{sed:'Sedentary',light:'Light',mod:'Moderate',act:'Active'}[p.activity]}</div></div>
     <div class="prof-row" onclick="openSheet('editstats')" style="cursor:pointer"><div class="prof-lbl">Edit stats</div><div class="prof-val" style="color:var(--mid)">→</div></div>`
   document.getElementById('profHow').innerHTML=`<div style="font-size:12px;color:var(--body);line-height:1.75">
-    <strong style="color:var(--head)">50/25/25 macro split</strong> (Carbs/Fat/Protein)<br>
+    <strong style="color:var(--head)">Aesthetic Macro split</strong> (High Protein, Low Fat)<br>
     Calculates exact targets based dynamically off your TDEE.<br><br>
     <strong style="color:var(--head)">Dynamic Adjustment</strong><br>
     Targets update once per week using an advanced EMA (Exponential Moving Average) to ignore sodium/water spikes and find your actual tissue weight.<br><br>
