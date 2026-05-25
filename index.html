@@ -497,11 +497,11 @@ const PLAN={
 
 // Meals definition (Auto-fill macro targets included)
 const MEAL_DEFS=[
-  {id:'breakfast',name:'Breakfast',ico:'🌅',desc:'Whey, Creatine, Milk, Cheerios',def:{cal:710,pro:45,carb:111,fat:13}},
+  {id:'breakfast',name:'Breakfast',ico:'🌅',desc:'Whey, Milk, Cheerios, Banana',def:{cal:805,pro:45,carb:135,fat:14}},
   {id:'snack1',name:'Snack 1',ico:'🍎',desc:'20g Almonds',def:{cal:115,pro:4,carb:4,fat:10}},
-  {id:'lunch',name:'Lunch',ico:'☀️',desc:'Chicken, Rice, Veggies',def:{cal:585,pro:42,carb:92,fat:4}},
-  {id:'snack2',name:'Snack 2',ico:'🍔',desc:'Beef Patty, Cheese, 2 Eggs (No Oil)',def:{cal:540,pro:38,carb:28,fat:28}},
-  {id:'dinner',name:'Dinner',ico:'🌙',desc:'Chicken, Rice, Beans, Yogurt',def:{cal:675,pro:59,carb:97,fat:4}},
+  {id:'lunch',name:'Lunch',ico:'☀️',desc:'Chicken, Rice, Veggies',def:{cal:585,pro:41,carb:93,fat:4}},
+  {id:'snack2',name:'Snack 2',ico:'🍔',desc:'Beef Patty, Cheese, 2 Eggs (No Oil)',def:{cal:550,pro:38,carb:28,fat:30}},
+  {id:'dinner',name:'Dinner',ico:'🌙',desc:'Chicken, Rice, Beans, Yogurt',def:{cal:655,pro:58,carb:94,fat:3}},
 ]
 
 // Goals definition
@@ -514,7 +514,7 @@ const GOALS_DEF=[
 
 // ═══════════════════════════════════════ DEFAULT PROFILE (AESTHETIC MACROS)
 const DEF={age:24,heightCm:168.5,startWt:165,activity:'sed',goal:'recomp',
-  targets:{cal:2625,pro:188,carb:332,fat:59},tdee:2625,
+  targets:{cal:2710,pro:190,carb:352,fat:60},tdee:2710,
   lastCheckin:null,checkinHistory:[]}
 const getP=()=>G('mf5_prof')||DEF
 const setP=p=>S('mf5_prof',p)
