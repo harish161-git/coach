@@ -20,7 +20,7 @@
   --a:#ffc844;--aa:rgba(255,200,68,0.10);
   --r:#ff5a7a;--ra:rgba(255,90,122,0.10);
   --t:#1ed8b8;--ta:rgba(30,216,184,0.10);
-  --safe-t:env(safe-area-inset-top,0px);--safe-b:env(safe-area-inset-bottom,0px);
+  --safe-t:env(safe-area-inset-top,0px);--safe-b:env(safe-area-bottom,0px);
 }
 html,body{height:100%;background:var(--bg);overflow:hidden}
 body{font-family:'DM Sans',sans-serif;font-size:15px;color:var(--body);position:fixed;width:100%;-webkit-font-smoothing:antialiased}
@@ -450,19 +450,20 @@ const S=(k,v)=>localStorage.setItem(k,JSON.stringify(v))
 // ═══════════════════════════════════════ NEW 4-DAY AESTHETIC PLAN
 const PLAN={
   1:{day:'MON – UPPER A (V-Taper)',short:'Upper A',exercises:[
-    {name:'Incline DB Press',sets:2,reps:'8-10',rest:'90s'},
+    {name:'Machine Chest Press',sets:2,reps:'8-10',rest:'2-3 min'},
     {name:'Pec Dec',sets:2,reps:'10-12',rest:'90s'},
-    {name:'Pull-Ups / Lat Pulldown',sets:2,reps:'8-10',rest:'90s'},
-    {name:'Chest Supported Row',sets:2,reps:'10-12',rest:'90s'},
+    {name:'Pull-Ups / Lat Pulldown',sets:2,reps:'8-10',rest:'2 min'},
+    {name:'Chest Supported Row',sets:2,reps:'10-12',rest:'2 min'},
     {name:'Cable Lateral Raise',sets:2,reps:'12-15',rest:'60s'},
-    {name:'Rear Delt Fly',sets:2,reps:'12-15',rest:'60s'},
+    {name:'Rear Delt Fly',sets:2,reps:'12-15',rest:'45s'},
     {name:'Bayesian Curl',sets:2,reps:'10-12',rest:'60s'},
     {name:'Rope Pressdown',sets:2,reps:'10-12',rest:'60s'}
   ]},
   2:{day:'TUE – LOWER QUADS',short:'Lower',exercises:[
-    {name:'Hack Squat (Pause)',sets:2,reps:'8-10',rest:'2 min'},
-    {name:'Leg Press',sets:2,reps:'10-12',rest:'90s'},
-    {name:'Leg Extension',sets:2,reps:'12-15',rest:'60s'},
+    {name:'Hack Squat (Pause)',sets:2,reps:'8-10',rest:'2-3 min'},
+    {name:'Leg Press',sets:1,reps:'10-12',rest:'-'},
+    {name:'Add/Abd',sets:1,reps:'10-12',rest:'-'},
+    {name:'Leg Extension',sets:3,reps:'12-15',rest:'60s'},
     {name:'Standing Calf Raise',sets:3,reps:'15-20',rest:'60s'}
   ]},
   3:{day:'WED – ACTIVE RECOVERY',short:'Recovery',exercises:[
@@ -471,27 +472,28 @@ const PLAN={
     {name:'Stationary Bike (Zone 2)',sets:1,reps:'30 mins',rest:'—'}
   ]},
   4:{day:'THU – UPPER B',short:'Upper B',exercises:[
-    {name:'Wide Lat Pulldown',sets:2,reps:'8-10',rest:'90s'},
+    {name:'Wide Lat Pulldown',sets:2,reps:'8-10',rest:'2 min'},
     {name:'Cable Row',sets:2,reps:'10-12',rest:'90s'},
-    {name:'Incline Bench',sets:2,reps:'8-10',rest:'90s'},
+    {name:'Incline DB Press',sets:2,reps:'8-10',rest:'2 min'},
+    {name:'Pec Dec',sets:2,reps:'10-12',rest:'90s'},
     {name:'DB Lateral Raise',sets:3,reps:'10-12',rest:'60s'},
     {name:'Face Pulls',sets:2,reps:'12-15',rest:'60s'},
-    {name:'Straight Arm Pulldown',sets:2,reps:'12-15',rest:'60s'}
+    {name:'Straight Arm Pulldown',sets:1,reps:'12-15',rest:'-'}
   ]},
   5:{day:'FRI – ARMS + HAMS',short:'Arms+Hams',exercises:[
     {name:'Seated Leg Curl',sets:2,reps:'10-12',rest:'60s'},
-    {name:'RDL',sets:2,reps:'8-10',rest:'90s'},
-    {name:'Incline DB Curl',sets:2,reps:'8-10',rest:'60s'},
+    {name:'RDL',sets:2,reps:'8-10',rest:'2-3 min'},
+    {name:'Incline DB Curl',sets:2,reps:'8-10',rest:'90s'},
     {name:'Hammer Curl',sets:2,reps:'10-12',rest:'60s'},
-    {name:'Skullcrusher',sets:2,reps:'8-10',rest:'60s'},
+    {name:'Skullcrusher',sets:2,reps:'8-10',rest:'90s'},
     {name:'Bar Pressdown',sets:2,reps:'10-12',rest:'60s'},
     {name:'Forearm Superset',sets:2,reps:'12-15',rest:'45s',superset:true}
   ]},
   6:{day:'SAT – CARDIO & CORE',short:'Cardio+Core',exercises:[
     {name:'Hanging Leg Raises',sets:2,reps:'12-20',rest:'60s'},
     {name:'Cable Crunches',sets:2,reps:'10-15',rest:'60s'},
+    {name:'Forearm Superset',sets:2,reps:'12-15',rest:'45s',superset:true},
     {name:'Incline Treadmill Walk (12% / 3mph)',sets:1,reps:'30 mins',rest:'—'}
-    {name:'Forearm Superset',sets:2,reps:'12-15',rest:'45s',superset:true}
   ]},
   0:{day:'SUN – REST',rest:true}
 }
