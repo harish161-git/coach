@@ -444,7 +444,7 @@ canvas#exChart{width:100%;display:block;height:140px}
 
 <script>
 // ═══════════════════════════════════════ STORAGE
-const G=k=>{try{return JSON.parse(localStorage.getItem(k)??'null')}catch{return null}}
+ G=k=>{try{return JSON.parse(localStorage.getItem(k)??'null')}catch{return null}}
 const S=(k,v)=>localStorage.setItem(k,JSON.stringify(v))
 
 // ═══════════════════════════════════════ NEW 4-DAY RECOMP SPLIT
@@ -455,8 +455,8 @@ const PLAN={
     {name:'Pull-Ups',sets:2,reps:'8-10',rest:'2 min'},
     {name:'Chest Supported Row',sets:2,reps:'10-12',rest:'2 min'},
     {name:'Cable Lateral Raise',sets:2,reps:'12-15',rest:'60s'},
-    {name:'Rear Delt Fly',sets:2,reps:'12-15',rest:'45s'}
-    {name:'Bayesian Curl',sets:1,reps:'10-12',rest:'60s'}
+    {name:'Rear Delt Fly',sets:2,reps:'12-15',rest:'45s'},
+    {name:'Bayesian Curl',sets:1,reps:'10-12',rest:'60s'},
     {name:'Rope Pressdown',sets:1,reps:'10-12',rest:'-'}
   ]},
   2:{day:'TUE – LOWER (MINIMAL)',short:'Lower',exercises:[
@@ -474,7 +474,7 @@ const PLAN={
     {name:'Incline DB Press',sets:2,reps:'8-10',rest:'2 min'},
     {name:'Pec Dec',sets:2,reps:'10-12',rest:'90s'},
     {name:'DB Lateral Raise',sets:3,reps:'10-12',rest:'60s'},
-    {name:'Face Pulls',sets:2,reps:'12-15',rest:'60s'}
+    {name:'Face Pulls',sets:2,reps:'12-15',rest:'60s'},
     {name:'Straight Arm Pulldown',sets:1,reps:'12-15',rest:'-'}
   ]},
   5:{day:'FRI – ARMS & ABS',short:'Arms+Abs',exercises:[
@@ -483,7 +483,7 @@ const PLAN={
     {name:'Rope Hammer Curl',sets:2,reps:'10-12',rest:'60s',superset:true},
     {name:'Tricep Bar Cable Pressdown',sets:2,reps:'10-12',rest:'60s'},
     {name:'Hanging Leg Raises',sets:2,reps:'12-20',rest:'60s'},
-    {name:'Cable Crunches',sets:2,reps:'10-15',rest:'60s'}
+    {name:'Cable Crunches',sets:2,reps:'10-15',rest:'60s'},
     {name:'Forearm Superset',sets:2,reps:'12-15',rest:'45s'}
   ]},
   6:{day:'SAT – CARDIO',short:'Cardio',exercises:[
